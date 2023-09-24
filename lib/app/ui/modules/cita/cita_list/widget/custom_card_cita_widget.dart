@@ -1,8 +1,9 @@
-import '../../../../../data/models/cita/cita_item_model.dart';
-import '../../../../../data/models/cita/hora_model.dart';
-import '../../../../global_controllers/dialog_controller.dart';
-import '../../../../global_widgets/divider/custom_divider.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/hora_model.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import '../../../../theme/app_colors.dart';
+import 'package:ortog_citas/app/ui/global_controllers/actionsUserController/llamada_controller.dart';
+import 'package:ortog_citas/app/ui/global_widgets/divider/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,6 @@ class CustomCardCita extends StatelessWidget {
   final Function(HoraModel) onChanged;
   final Function(CitaItemModel) onDetalleCita;
   final Function(CitaItemModel) onDeleteCita;
-  final Function(CitaItemModel) onCrearPacienteFromCita;
   final Function(CitaItemModel) onUpdateCita;
   const CustomCardCita({
     super.key,
@@ -23,7 +23,6 @@ class CustomCardCita extends StatelessWidget {
     required this.onDeleteCita,
     required this.onDetalleCita,
     required this.onUpdateCita,
-    required this.onCrearPacienteFromCita,
   });
 
   @override
@@ -242,6 +241,12 @@ class CustomCardCita extends StatelessWidget {
           heightBottomSheet: StyleUtils.CUSTOM_BOTTOM_SHEET_1_ROW,
           listOptions1: [
             CustomBottomSheetItem(
+              title: "Editar",
+              icon: const Icon(Icons.edit),
+              onPressedDynamic: (s) {},
+              itemObject: citaItem,
+            ),
+            CustomBottomSheetItem(
               title: "Ver Detalle",
               icon: const Icon(Icons.remove_red_eye_outlined),
               onPressedDynamic: onDetalleCita,
@@ -251,13 +256,9 @@ class CustomCardCita extends StatelessWidget {
                 ? CustomBottomSheetItem(
                     title: "Llamar",
                     icon: const Icon(Icons.phone),
-                    onPressedDynamic: (citaitem) {
-                      DialogController().showDialog001(
-                          title: "Celular:",
-                          mensaje: citaItem.celular ??
-                              "el sistema tiene registrado celular pero no se muestra");
-                      // LlamadasController();
-                      //.llamarCelular(celular: citaItem.celular); is not pc
+                    onPressedDynamic: (s) {
+                      LlamadasController()
+                          .llamarCelular(celular: citaItem.celular);
                     },
                     itemObject: citaItem,
                   )
@@ -299,15 +300,9 @@ class CustomCardCita extends StatelessWidget {
           heightBottomSheet: StyleUtils.CUSTOM_BOTTOM_SHEET_1_ROW,
           listOptions1: [
             CustomBottomSheetItem(
-              title: "Modificar",
-              icon: const Icon(Icons.edit),
+              title: "Actualizar",
+              icon: const Icon(Icons.upload_outlined),
               onPressedDynamic: onUpdateCita,
-              itemObject: citaItem,
-            ),
-            CustomBottomSheetItem(
-              title: "Registrar este paciente",
-              icon: const Icon(Icons.person_add_alt_sharp),
-              onPressedDynamic: onCrearPacienteFromCita,
               itemObject: citaItem,
             ),
             citaItem.citaRapidaCelular != null
@@ -315,14 +310,8 @@ class CustomCardCita extends StatelessWidget {
                     title: "Llamar",
                     icon: const Icon(Icons.phone),
                     onPressedDynamic: (s) {
-                      DialogController().showDialog001(
-                          icon: Icons.phone,
-                          title: "Celular:",
-                          twoOptions: false,
-                          mensaje: citaItem.citaRapidaCelular ??
-                              "el sistema tiene registrado celular pero no se muestra");
-                      // LlamadasController()
-                      //     .llamarCelular(celular: citaItem.citaRapidaCelular);
+                      LlamadasController()
+                          .llamarCelular(celular: citaItem.citaRapidaCelular);
                     },
                     itemObject: citaItem,
                   )

@@ -1,4 +1,9 @@
 import 'dart:convert';
+
+import 'package:ortog_citas/app/data/models/paciente/paciente_create_from_cita_model.dart';
+import 'package:ortog_citas/app/data/models/paciente/paciente_create_model.dart';
+import 'package:ortog_citas/app/data/models/paciente/paciente_item_model.dart';
+import 'package:ortog_citas/app/data/models/request_models/paciente_request.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +14,8 @@ import '../../../../core/utils/extensions/string_extends.dart';
 import '../../../../core/utils/logging_interceptor.dart';
 import '../../../../domain/either/either.dart';
 import '../../../../ui/routes/app_routes.dart';
-import '../../../models/paciente/paciente_create_from_cita_model.dart';
-import '../../../models/paciente/paciente_create_model.dart';
-import '../../../models/paciente/paciente_item_model.dart';
 import '../../../models/paciente/paciente_model.dart';
 import '../../../models/paciente/paciente_update_model.dart';
-import '../../../models/request_models/paciente_request.dart';
 import '../../../models/response_api_model.dart';
 import '../../../models/system_notification.dart';
 

@@ -1,9 +1,9 @@
+import 'package:ortog_citas/app/data/models/doctor/doctor_model.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
 import 'package:get/get.dart';
 
 import '../../../domain/entities/usuario.dart';
-import '../../models/doctor/doctor_model.dart';
 import '../../models/usuario/usuario_model.dart';
-import '../../models/usuario/usuario_responsive.dart';
 import '../../provider/api/local/local_auth.dart';
 
 class LocalAuthRepository {

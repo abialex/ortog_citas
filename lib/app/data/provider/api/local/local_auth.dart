@@ -1,12 +1,12 @@
 import 'dart:convert';
+import 'package:ortog_citas/app/data/models/doctor/doctor_model.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../domain/entities/usuario.dart';
-import '../../../models/doctor/doctor_model.dart';
 import '../../../models/usuario/usuario_model.dart';
-import '../../../models/usuario/usuario_responsive.dart';
 
 class LocalAuth {
   //TODO LO LOCAL

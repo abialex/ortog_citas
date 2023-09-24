@@ -1,6 +1,7 @@
+import 'package:ortog_citas/app/data/models/system_notification.dart';
 import 'package:get/get.dart';
+
 import '../../../core/usecases/usecase_params.dart';
-import '../../../data/models/system_notification.dart';
 import '../../either/either.dart';
 import '../../repository/ipaciente_repository.dart';
 

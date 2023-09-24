@@ -1,14 +1,15 @@
+import 'package:ortog_citas/app/core/utils/extensions/date_extends.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_rapida_item_model.dart';
+import 'package:ortog_citas/app/data/models/persona/persona_sunat_model.dart';
+import 'package:ortog_citas/app/domain/usecases/paciente/create_paciente_from_cita_use_case.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/validators/form_validators.dart';
-import '../../../../data/models/cita/cita_rapida_item_model.dart';
 import '../../../../data/models/contenedor_model.dart';
 import '../../../../data/models/paciente/paciente_create_from_cita_model.dart';
-import '../../../../data/models/persona/persona_sunat_model.dart';
 import '../../../../domain/repository/icontenedor_repository.dart';
-import '../../../../domain/usecases/paciente/create_paciente_from_cita_use_case.dart';
 import '../../../global_controllers/carrito_list_controller.dart';
-import '../../../global_controllers/dialog_controller.dart';
 import 'models_views/paciente_create_from_cita_form_model.dart';
 
 class PacienteCreateFromCitaController extends GetxController {
@@ -21,8 +22,6 @@ class PacienteCreateFromCitaController extends GetxController {
 
 //-----------------------------------------------------RX--------------------------------------------------------
   final form = PacienteCreateFromCitaFormModel.initial().obs;
-  Rx<DateTime> initialDate = DateTime(1900, 1, 1).obs;
-  Rx<DateTime> selectedDateFechaNacimiento = DateTime.now().obs;
 
   Rx<DateTime> selectDate = DateTime(2000, 1, 1).obs;
   DateTime firstday = DateTime(1900);
@@ -47,7 +46,6 @@ class PacienteCreateFromCitaController extends GetxController {
   final nombresCtrl = TextEditingController();
   final apellidoPaternoCtrl = TextEditingController();
   final apellidoMaternoCtrl = TextEditingController();
-  final dateFechaNacimientoCtrl = TextEditingController();
 
   @override
   void onReady() {
@@ -61,6 +59,7 @@ class PacienteCreateFromCitaController extends GetxController {
     _getTipoGeneros();
     _getTipoDocumento();
     _getTipoOcupacion();
+    setFechaNacimiento(DateTime(2000, 1, 1));
     setIdCita(idcita);
   }
 
@@ -240,9 +239,9 @@ class PacienteCreateFromCitaController extends GetxController {
     });
   }
 
-  void setFechaNacimiento(String value) {
+  void setFechaNacimiento(DateTime value) {
     form.update((val) {
-      val?.fechaNacimiento = value;
+      val?.fechaNacimiento = DateTimeExtensions.toFormattedyyyyMMdd(value);
     });
   }
 
@@ -272,13 +271,13 @@ class PacienteCreateFromCitaController extends GetxController {
 
   void setDomicilio(String value) {
     form.update((val) {
-      val?.domicilio = value.isEmpty ? null : value;
+      val?.domicilio = value;
     });
   }
 
   void setLugarProcedencia(String value) {
     form.update((val) {
-      val?.lugarProcedencia = value.isEmpty ? null : value;
+      val?.lugarProcedencia = value;
     });
   }
 

@@ -1,8 +1,8 @@
+import 'package:ortog_citas/app/core/utils/style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
 
-import '../../../../../core/utils/style_utils.dart';
 import '../../../../../data/models/paciente/paciente_item_model.dart';
 import '../../../../global_controllers/actionsUserController/llamada_controller.dart';
 import '../../../../global_widgets/dropdown_bottom_sheet/custom_bottom_sheet.dart';
@@ -159,8 +159,10 @@ class CustomCardPersonaItemWidget extends StatelessWidget {
         CustomBottomSheet(
           title: personaItem.denominacion,
           itemObject: personaItem,
-          heightBottomSheet: StyleUtils.CUSTOM_BOTTOM_SHEET_1_ROW,
-          listOptions1: [
+          heightBottomSheet: personaItem.celular != null
+              ? StyleUtils.CUSTOM_BOTTOM_SHEET_2_ROW
+              : StyleUtils.CUSTOM_BOTTOM_SHEET_1_ROW,
+          listOptions2: [
             CustomBottomSheetItem(
               title: "Editar",
               icon: const Icon(Icons.edit),
@@ -173,12 +175,26 @@ class CustomCardPersonaItemWidget extends StatelessWidget {
               onPressedDynamic: onDetalle,
               itemObject: personaItem,
             ),
-            // CustomBottomSheetItem(
-            //   title: "Eliminar",
-            //   icon: const Icon(Icons.delete),
-            //   onPressedDynamic: (p0) {},
-            //   itemObject: personaItem,
-            // ),
+            CustomBottomSheetItem(
+              title: "Eliminar",
+              icon: const Icon(Icons.delete),
+              onPressedDynamic: openDeleteModal,
+              itemObject: personaItem,
+            ),
+          ],
+          listOptions1: [
+            Visibility(
+              visible: personaItem.celular != null,
+              child: CustomBottomSheetItem(
+                title: "Llamar",
+                icon: const Icon(Icons.phone),
+                onPressedDynamic: (s) {
+                  LlamadasController()
+                      .llamarCelular(celular: personaItem.celular);
+                },
+                itemObject: personaItem,
+              ),
+            )
           ],
         ),
         isDismissible: true,

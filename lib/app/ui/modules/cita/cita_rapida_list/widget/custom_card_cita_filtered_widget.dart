@@ -1,7 +1,7 @@
-import '../../../../../data/models/cita/cita_rapida_item_model.dart';
-import '../../../../global_controllers/actionsUserController/llamada_controller.dart';
-import '../../../../global_controllers/dialog_controller.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_rapida_item_model.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import '../../../../theme/app_colors.dart';
+import 'package:ortog_citas/app/ui/global_controllers/actionsUserController/llamada_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

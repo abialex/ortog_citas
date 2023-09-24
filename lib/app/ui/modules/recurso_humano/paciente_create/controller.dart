@@ -1,15 +1,16 @@
+import 'package:ortog_citas/app/core/utils/extensions/date_extends.dart';
+import 'package:ortog_citas/app/data/models/paciente/paciente_create_model.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/snackbar.dart';
 import '../../../../core/validators/form_validators.dart';
 import '../../../../data/models/contenedor_model.dart';
-import '../../../../data/models/paciente/paciente_create_model.dart';
 import '../../../../data/models/paciente/paciente_item_model.dart';
 import '../../../../data/models/persona/persona_sunat_model.dart';
 import '../../../../domain/repository/icontenedor_repository.dart';
 import '../../../../domain/usecases/paciente/create_paciente.dart';
 import '../../../global_controllers/carrito_list_controller.dart';
-import '../../../global_controllers/dialog_controller.dart';
 import '../../../theme/app_colors.dart';
 import 'models_views/paciente_create_form_model.dart';
 
@@ -23,8 +24,6 @@ class PacienteCreateController extends GetxController {
 
 //-----------------------------------------------------RX--------------------------------------------------------
   final form = PacienteCreateFormModel.initial().obs;
-  Rx<DateTime> initialDate = DateTime(1900, 1, 1).obs;
-  Rx<DateTime> selectedDateFechaNacimiento = DateTime.now().obs;
 
   Rx<DateTime> selectDate = DateTime(2000, 1, 1).obs;
   DateTime firstday = DateTime(1900);
@@ -37,7 +36,6 @@ class PacienteCreateController extends GetxController {
   final nombresCtrl = TextEditingController();
   final apellidoPaternoCtrl = TextEditingController();
   final apellidoMaternoCtrl = TextEditingController();
-  final dateFechaNacimiento = TextEditingController();
 
 //-----------------------------------------------------RX FIN---------------------------------------------------------
   PacienteCreateController(
@@ -52,7 +50,7 @@ class PacienteCreateController extends GetxController {
     _getTipoGeneros();
     _getTipoDocumento();
     _getTipoOcupacion();
-    //setFechaNacimiento(DateTime(2000, 1, 1));
+    setFechaNacimiento(DateTime(2000, 1, 1));
   }
 
   @override
@@ -234,9 +232,9 @@ class PacienteCreateController extends GetxController {
     });
   }
 
-  void setFechaNacimiento(String value) {
+  void setFechaNacimiento(DateTime value) {
     form.update((val) {
-      val?.fechaNacimiento = value;
+      val?.fechaNacimiento = DateTimeExtensions.toFormattedyyyyMMdd(value);
     });
   }
 
@@ -266,13 +264,13 @@ class PacienteCreateController extends GetxController {
 
   void setDomicilio(String value) {
     form.update((val) {
-      val?.domicilio = value.isEmpty ? null : value;
+      val?.domicilio = value;
     });
   }
 
   void setLugarProcedencia(String value) {
     form.update((val) {
-      val?.lugarProcedencia = value.isEmpty ? null : value;
+      val?.lugarProcedencia = value;
     });
   }
 

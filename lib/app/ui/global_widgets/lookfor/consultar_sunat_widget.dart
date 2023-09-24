@@ -42,7 +42,6 @@ class ConsultaSunatPage extends GetView<ConsultaSunatController> {
                     onChanged: _.setSearch,
                     validators: (p0) {},
                     keyboardType: TextInputType.number,
-                    inputFormat: InputFormatEnum.numeros,
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.left,
                     fontSize: StyleUtils.H3_24,

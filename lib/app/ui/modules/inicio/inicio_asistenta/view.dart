@@ -1,6 +1,6 @@
+import 'package:ortog_citas/app/core/utils/style_utils.dart';
+import 'package:ortog_citas/app/ui/global_widgets/animation/image_bubble.dart';
 import 'package:firebase_database/firebase_database.dart';
-import '../../../../core/utils/style_utils.dart';
-import '../../../global_widgets/animation/image_bubble.dart';
 import '../../../global_widgets/animation/image_swicht.dart';
 import '../../../global_widgets/animation/text_bubble.dart';
 import '../../../global_widgets/drawer_menu/navigation_drawer.dart';

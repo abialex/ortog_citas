@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ortog_citas/app/ui/global_controllers/snackbar_controller.dart';
-import '../../core/utils/constants/constants.dart';
+import '../../core/utils/constants.dart';
 import '../../core/utils/snackbar.dart';
 import '../../data/models/container/rol_model.dart';
 import '../../data/models/usuario/usuario_responsive.dart';
@@ -10,6 +9,7 @@ import '../../domain/usecases/authentication/cerrar_sesion_use_case.dart';
 import '../routes/routes_menu_slide.dart';
 import '../utils/functions/redirect_function.dart';
 import 'dialog_controller.dart';
+import 'snackbar_controller.dart';
 
 class ThemeController extends GetxController {
   final LocalAuthRepository _localAuthRepository =

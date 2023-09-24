@@ -1,8 +1,9 @@
+import 'package:ortog_citas/app/data/models/contenedor_model.dart';
+import 'package:ortog_citas/app/ui/global_widgets/buttons/custom_button_submit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../data/models/contenedor_model.dart';
-import '../../../global_widgets/buttons/custom_button_submit.dart';
-import '../../../global_widgets/date_pickers/custom_date_picker_001.dart';
+import '../../../global_widgets/date_pickers/custom_date_picker_002.dart';
 import '../../../global_widgets/divider/custom_divider.dart';
 import '../../../global_widgets/dropdowns/dropdown01/custom_dropdown_form_field_001.dart';
 import '../../../global_widgets/labels/custom_label_form_001.dart';
@@ -26,14 +27,14 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                 Expanded(
                   flex: 9,
                   child: Text(
-                    "MODIFICAR PACIENTE",
+                    "UPDATE PACIENTE",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
-                Expanded(flex: 1, child: SizedBox.shrink())
+                Expanded(flex: 2, child: SizedBox.shrink())
               ],
             ),
           ),
@@ -69,7 +70,6 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                                     onChanged: _.setNombres,
                                     validators: _.nombresValidators,
                                     keyboardType: TextInputType.text,
-                                    inputFormat: InputFormatEnum.letras,
                                     textInputAction: TextInputAction.next,
                                   )
                                 ],
@@ -99,7 +99,6 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                                     onChanged: _.setApellidoPaterno,
                                     validators: _.apellidoPaternoValidators,
                                     keyboardType: TextInputType.text,
-                                    inputFormat: InputFormatEnum.letras,
                                     textInputAction: TextInputAction.next,
                                   )
                                 ],
@@ -129,7 +128,6 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                                     onChanged: _.setApellidoMaterno,
                                     validators: _.apellidoMaternoValidators,
                                     keyboardType: TextInputType.text,
-                                    inputFormat: InputFormatEnum.letras,
                                     textInputAction: TextInputAction.next,
                                   )
                                 ],
@@ -196,23 +194,13 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                                     left: 5,
                                     top: 5,
                                   ),
-                                  CustomDatePicker001(
-                                    firstDate: _.initialDate.value,
-                                    initialDate: _.selectedDateFechaNacimiento,
-                                    hintText:
-                                        'click para seleccionar la fecha de nacimiento',
-                                    lastDate: DateTime.now(),
-                                    onChanged: _.setFechaNacimiento,
-                                    controller: _.dateFechaNacimientoCtrl,
-                                    validator: _.fechaNacimientoValidators,
+                                  CustomDatePicker002(
+                                    dateInit: _.selectDate.value,
+                                    onChangeDate: _.setFechaNacimiento,
+                                    maximunYear: DateTime.now().year,
+                                    minimunYear: 1900,
+                                    mode: CupertinoDatePickerMode.date,
                                   ),
-                                  // CustomDatePicker002(
-                                  //   dateInit: _.selectDate.value,
-                                  //   onChangeDate: _.setFechaNacimiento,
-                                  //   maximunYear: DateTime.now().year,
-                                  //   minimunYear: 1900,
-                                  //   mode: CupertinoDatePickerMode.date,
-                                  // ),
                                 ],
                               ),
                             )
@@ -262,7 +250,6 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                                     onChanged: _.setNumDocumento,
                                     validators: _.numDocValidators,
                                     keyboardType: TextInputType.number,
-                                    inputFormat: InputFormatEnum.numeros,
                                     textInputAction: TextInputAction.next,
                                   )
                                 ],
@@ -294,7 +281,6 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                                     onChanged: _.setCelular,
                                     validators: (p0) {},
                                     keyboardType: TextInputType.number,
-                                    inputFormat: InputFormatEnum.numeros,
                                   )
                                 ],
                               ),

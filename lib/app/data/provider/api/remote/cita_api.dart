@@ -1,23 +1,21 @@
-import 'dart:convert';
+import 'package:ortog_citas/app/core/utils/extensions/response_extends.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_create_model.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_detalle_model.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_rapida_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/hora_model.dart';
+import 'package:ortog_citas/app/data/models/request_models/cita_request_v2.dart';
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/ui/routes/app_routes.dart';
 
 import '../../../../core/network/network_info.dart';
 import '../../../../core/utils/api_exception_handler .dart';
-import '../../../../core/utils/extensions/response_extends.dart';
 import '../../../../core/utils/logging_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import '../../../../domain/either/either.dart';
+import 'package:ortog_citas/app/data/models/response_api_model.dart';
 
-import '../../../../ui/routes/app_routes.dart';
-import '../../../models/cita/cita_create_model.dart';
-import '../../../models/cita/cita_detalle_model.dart';
-import '../../../models/cita/cita_item_model.dart';
-import '../../../models/cita/cita_rapida_item_model.dart';
-import '../../../models/cita/hora_model.dart';
 import '../../../models/request_models/cita_request_v1.dart';
-import '../../../models/request_models/cita_request_v2.dart';
-import '../../../models/response_api_model.dart';
-import '../../../models/system_notification.dart';
 
 class CitaAPI {
   final Dio _dio = Get.find<Dio>();
@@ -265,61 +263,6 @@ class CitaAPI {
           List<CitaRapidaItemModel> horas =
               listRequest.map((e) => CitaRapidaItemModel.fromJson(e)).toList();
           return Either.right(horas);
-        },
-      );
-    } catch (e) {
-      final errorMessage = ApiExceptionHandler.getErrorMessage(e);
-      return Either.left(
-        SystemNotification(
-          titulo: "Error System",
-          mensaje: errorMessage,
-          detalle: "",
-        ),
-      );
-    }
-  }
-
-  Future<Either<SystemNotification, int>> UpdateCitaRapida(
-      CitaItemModel citaItem) async {
-    _dio.interceptors.addAll(
-      [
-        LoggingInterceptor(),
-        AuthInterceptor(""),
-      ],
-    );
-    bool hasInternet = await Network.checkInternetConnectivity();
-    if (!hasInternet) {
-      return Either.left(
-        SystemNotification(
-          titulo: "Internet",
-          mensaje: "No hay conexión",
-          detalle: "",
-        ),
-      );
-    }
-    final citaRapidaUpdate = {
-      "id": citaItem.idcita,
-      "hora": citaItem.hora,
-      "razon": citaItem.razon,
-      "isCitaRapida": citaItem.isCitaRapida,
-      "citaRapidaNombrePaciente": citaItem.citaRapidaNombrePaciente,
-      "citaRapidaCelular": citaItem.citaRapidaCelular,
-    };
-    try {
-      final response = await _dio.put(
-        "/cita/cita-update",
-        data: json.encode(citaRapidaUpdate),
-      );
-
-      final resultApi = await ResponseExtensions.responseApiFunction(
-          response.isRedirect, response.data, response.statusCode);
-      return await resultApi.when(
-        left: (SystemNotification) async {
-          return Either.left(SystemNotification);
-        },
-        right: (response) async {
-          int idCita = response as int;
-          return Either.right(idCita);
         },
       );
     } catch (e) {

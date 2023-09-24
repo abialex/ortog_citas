@@ -1,6 +1,6 @@
+import 'package:ortog_citas/app/core/utils/style_utils.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/style_utils.dart';
 import '../../../../theme/app_colors.dart';
 
 class CustomFieldWidget extends StatelessWidget {

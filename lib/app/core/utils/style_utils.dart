@@ -43,17 +43,4 @@ class StyleUtils {
   static const double CUSTOM_PADDING_FORM_10_DEFAULT = 10;
   static const double CUSTOM_PADDING_FORM_15_DEFAULT = 15;
   static const double CUSTOM_PADDING_FORM_20_DEFAULT = 20;
-  static const double CUSTOM_PADDING_FORM_25_DEFAULT = 25;
-
-  static const double MAX_HEIGHT_IMAG_300 = 300;
-  static const double MAX_HEIGHT_IMAG_150 = 150;
-  static const double MAX_WIDTH_IMAG_400 = 400;
-
-  static const double MAX_WIDTH_SCREEN = 450;
-
-  //manejador de repsuestas
-  static const int TIME_WAIT_ASYNC_MILISECONDS_500 = 500;
-  static const int TIME_WAIT_ASYNC_MILISECONDS_600 = 600;
-  static const int TIME_WAIT_ASYNC_MILISECONDS_750 = 750;
-  static const int TIME_WAIT_ASYNC_SECONDS = 1;
 }

@@ -1,3 +1,4 @@
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../../../data/models/paciente/paciente_create_model.dart';

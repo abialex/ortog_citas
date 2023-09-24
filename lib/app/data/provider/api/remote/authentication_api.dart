@@ -1,3 +1,6 @@
+import 'package:ortog_citas/app/data/models/response_api_model.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
+import 'package:ortog_citas/app/data/repository_imp/local/local_auth_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
@@ -8,10 +11,7 @@ import '../../../../core/utils/extensions/string_extends.dart';
 import '../../../../core/utils/logging_interceptor.dart';
 import '../../../../domain/either/either.dart';
 import '../../../../ui/routes/app_routes.dart';
-import '../../../models/response_api_model.dart';
 import '../../../models/system_notification.dart';
-import '../../../models/usuario/usuario_responsive.dart';
-import '../../../repository_imp/local/local_auth_repository.dart';
 
 class AuthenticationAPI {
   final Dio _dio = Get.find<Dio>();

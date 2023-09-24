@@ -1,8 +1,9 @@
+import 'package:ortog_citas/app/data/models/container/sede_model.dart';
+import 'package:ortog_citas/app/domain/entities/persona.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../domain/entities/usuario.dart';
 import '../container/rol_model.dart';
-import '../container/sede_model.dart';
 
 part 'usuario_responsive.g.dart';
 

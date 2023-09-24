@@ -4,12 +4,6 @@ import 'package:flutter/services.dart';
 import '../../../../core/utils/style_utils.dart';
 import '../../../theme/app_colors.dart';
 
-enum InputFormatEnum {
-  letras,
-  numeros,
-  ambos;
-}
-
 class TextFormFieldCustom001 extends StatelessWidget {
   final String hintText;
   final Function(String)? onChanged;
@@ -26,7 +20,6 @@ class TextFormFieldCustom001 extends StatelessWidget {
   final Icon icon;
   final bool isEnabled;
   final int maxlength;
-  final InputFormatEnum inputFormat;
 
   const TextFormFieldCustom001({
     super.key,
@@ -45,30 +38,14 @@ class TextFormFieldCustom001 extends StatelessWidget {
     this.icon = const Icon(Icons.edit),
     this.isEnabled = true,
     this.maxlength = 150,
-    this.inputFormat = InputFormatEnum.ambos,
   });
-
-  TextInputFormatter _inputFormatted(InputFormatEnum state) {
-    switch (state) {
-      case InputFormatEnum.letras:
-        return FilteringTextInputFormatter.allow(
-            RegExp(r'[a-zA-ZáÁéÉíÍóÓúÚüÜñÑ\s]'));
-      case InputFormatEnum.numeros:
-        return FilteringTextInputFormatter.allow(RegExp(r'[0-9]'));
-      case InputFormatEnum.ambos:
-        return FilteringTextInputFormatter.allow(
-            RegExp(r'[a-zA-ZáÁéÉíÍóÓúÚüÜñÑ\s0-9.,-]'));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
       child: TextFormField(
-        maxLength: maxlength,
-        inputFormatters: [_inputFormatted(inputFormat)],
+        inputFormatters: [LengthLimitingTextInputFormatter(maxlength)],
         enabled: isEnabled,
         decoration: InputDecoration(
           suffixIcon: icon,

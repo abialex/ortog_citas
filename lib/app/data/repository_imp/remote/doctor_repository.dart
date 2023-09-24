@@ -1,10 +1,10 @@
+import 'package:ortog_citas/app/data/models/doctor/doctor_model.dart';
+import 'package:ortog_citas/app/data/provider/api/remote/doctor_api.dart';
+import 'package:ortog_citas/app/domain/repository/idoctor_repository.dart';
 import 'package:get/get.dart';
 
 import '../../../domain/either/either.dart';
-import '../../../domain/repository/idoctor_repository.dart';
-import '../../models/doctor/doctor_model.dart';
 import '../../models/system_notification.dart';
-import '../../provider/api/remote/doctor_api.dart';
 
 class DoctorRepository extends IDoctorRepository {
   final DoctorAPI _api = Get.find<DoctorAPI>();

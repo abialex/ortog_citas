@@ -1,16 +1,15 @@
 import 'dart:io';
-
+import 'package:ortog_citas/app/core/utils/snackbar.dart';
+import 'package:ortog_citas/app/data/models/user_token_firebase_model.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
+import 'package:ortog_citas/app/data/repository_imp/local/local_auth_repository.dart';
+import 'package:ortog_citas/app/domain/repository/iauthentication_repository.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/middleware/push_notification_service.dart';
-import '../../../core/utils/snackbar.dart';
 import '../../../data/models/container/rol_model.dart';
-import '../../../data/models/user_token_firebase_model.dart';
-import '../../../data/models/usuario/usuario_responsive.dart';
-import '../../../data/repository_imp/local/local_auth_repository.dart';
-import '../../../domain/repository/iauthentication_repository.dart';
 import '../../../domain/usecases/userFirebase/save_user_token_firebase.dart';
-import '../../global_controllers/dialog_controller.dart';
 import '../../utils/functions/redirect_function.dart';
 
 enum ProgressState { oculto, visible }
@@ -24,7 +23,7 @@ class LoginController extends GetxController {
 
 //-----------------------------------------------------RX---------------------------------------------------------
   RxBool oculto = true.obs;
-  final lastUpdate = "30/08/2023";
+  final lastUpdate = "11/07/2023";
   final version = "1.0.0";
 
 //-----------------------------------------------------RX FIN---------------------------------------------------------

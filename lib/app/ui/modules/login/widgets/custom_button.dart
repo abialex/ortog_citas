@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/utils/style_utils.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomButtonLogin extends StatelessWidget {
   final Function()? onTap;
@@ -12,8 +12,7 @@ class CustomButtonLogin extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding:
-            const EdgeInsets.all(StyleUtils.CUSTOM_PADDING_FORM_20_DEFAULT),
+        padding: const EdgeInsets.all(25),
         margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),

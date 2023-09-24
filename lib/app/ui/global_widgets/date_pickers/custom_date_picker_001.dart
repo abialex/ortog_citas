@@ -98,7 +98,7 @@ class CustomDatePicker001 extends StatelessWidget {
         controller: controller,
         onTap: () async {
           DateTime? selectedDate = await showDatePicker(
-              //keyboardType: TextInputType.streetAddress,
+              keyboardType: TextInputType.streetAddress,
               initialEntryMode: initialEntryMode,
               helpText: helptText,
               context: context,

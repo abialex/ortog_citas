@@ -1,6 +1,6 @@
+import 'package:ortog_citas/app/data/models/cita/cita_detalle_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../data/models/cita/cita_detalle_model.dart';
 import '../../../../domain/usecases/cita/get_byid_cita.dart';
 import '../../../global_controllers/dialog_controller.dart';
 

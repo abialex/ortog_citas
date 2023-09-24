@@ -1,8 +1,8 @@
+import 'package:ortog_citas/app/domain/either/either.dart';
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/data/models/persona/persona_sunat_model.dart';
 import 'package:get/get.dart';
-import '../../../domain/either/either.dart';
 import '../../../domain/repository/ipersona_repository.dart';
-import '../../models/persona/persona_sunat_model.dart';
-import '../../models/system_notification.dart';
 import '../../provider/api/remote/persona_api.dart';
 
 class PersonaRepository extends IPersonaRepository {

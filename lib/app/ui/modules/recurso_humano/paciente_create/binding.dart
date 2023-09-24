@@ -1,7 +1,7 @@
+import 'package:ortog_citas/app/domain/usecases/paciente/create_paciente.dart';
+import 'package:ortog_citas/app/ui/modules/login/controller.dart';
+import 'package:ortog_citas/app/ui/modules/recurso_humano/paciente_create/controller.dart';
 import 'package:get/get.dart';
-
-import '../../../../domain/usecases/paciente/create_paciente.dart';
-import 'controller.dart';
 
 class PacienteCreateBinding extends Bindings {
   @override

@@ -2,10 +2,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firedart/firestore/firestore.dart';
 import 'package:get/get.dart';
 import '../../../../data/models/usuario/message_real_time_model.dart';
 import '../../../../data/models/usuario/usuario_responsive.dart';
@@ -77,10 +77,6 @@ class InicioAdministradorController extends GetxController {
     listenRealTime?.cancel();
   }
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> winlisten() {
-    return FirebaseFirestore.instance.collection("users").snapshots();
-  }
-
   StreamSubscription<DatabaseEvent> listenToDatabaseChanges() {
     final String asistentas = "asistentas";
     return FirebaseDatabase.instance.ref(asistentas).onValue.listen(
@@ -96,14 +92,6 @@ class InicioAdministradorController extends GetxController {
         }
       },
     );
-  }
-
-  void userWIndows() async {
-    Firestore fire = Firestore.initialize("slg-cita");
-    await fire.collection("users").get().then((value) {
-      print(value);
-      return null;
-    });
   }
 
   void getListData() async {
@@ -162,6 +150,7 @@ class InicioAdministradorController extends GetxController {
       User? user = userCredential?.user;
       // El usuario se autenticó correctamente
     } catch (e) {
+      print("no_user ${e.toString()}");
       // Ocurrió un error durante la autenticación
     }
   }

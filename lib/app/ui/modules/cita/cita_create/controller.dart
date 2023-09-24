@@ -1,32 +1,43 @@
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/hora_model.dart';
+import 'package:ortog_citas/app/data/models/container/sede_model.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
+import 'package:ortog_citas/app/data/repository_imp/local/local_auth_repository.dart';
+import 'package:ortog_citas/app/domain/repository/iauthentication_repository.dart';
+import 'package:ortog_citas/app/ui/modules/cita/cita_create/models_views/cita_create_form_model.dart';
+import 'package:ortog_citas/app/ui/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/utils/constants/constans_model_atributo.dart';
 import '../../../../core/validators/form_validators.dart';
 import '../../../../data/models/cita/cita_create_model.dart';
-import '../../../../data/models/container/sede_model.dart';
 import '../../../../data/models/doctor/doctor_model.dart';
-import '../../../../data/models/usuario/usuario_responsive.dart';
-import '../../../../data/repository_imp/local/local_auth_repository.dart';
 import '../../../../domain/repository/icita_repository.dart';
 import '../../../../domain/repository/ipaciente_repository.dart';
+import '../../../global_controllers/carrito_list_controller.dart';
 import '../../../global_controllers/dialog_controller.dart';
 import '../../../global_controllers/snackbar_controller.dart';
-import '../../../routes/app_routes.dart';
 import '../../../theme/app_colors.dart';
-import 'models_views/cita_create_form_model.dart';
-
-enum ProgressState { oculto, visible }
+import '../cita_list/controller.dart';
 
 class CitaCreateController extends GetxController {
   //useCases
   final LocalAuthRepository _localAuthRepository =
       Get.find<LocalAuthRepository>();
+  final IAuthenticationRepository _authenticationRepository =
+      Get.find<IAuthenticationRepository>();
   final ICitaRepository _citaRepository = Get.find<ICitaRepository>();
   final IPacienteRepository _pacienteRepository =
       Get.find<IPacienteRepository>();
-
+  final CarritoController<HoraModel> carritoController =
+      Get.find<CarritoController<HoraModel>>();
+  final CitaListController citaListController = Get.find<CitaListController>();
   SnackBarController snackbar = SnackBarController();
+  DateTime firstday = DateTime(2022);
+  DateTime lastDate = DateTime(2025);
+  Rx<DateTime> selectDate = DateTime.now().obs;
+  RxList<HoraModel> listHoraModel = <HoraModel>[].obs;
+  RxList<DoctorModel> doctorList = <DoctorModel>[].obs;
   RxList<SedeModel> sedeList = <SedeModel>[].obs;
   Rx<UsuarioResponsive> user = UsuarioResponsive(
           id: 0,
@@ -78,21 +89,20 @@ class CitaCreateController extends GetxController {
   final horaCtrl = TextEditingController();
   final pacienteCtrl = TextEditingController();
   final dniCtrl = TextEditingController();
-  Rx<ProgressState> loginIconState = ProgressState.oculto.obs;
 
   @override
   void onReady() async {
     super.onReady();
-    fechaCitaCtrl.text = arguments["fechaString"];
-    doctorCtrl.text = arguments["doctorDenominacion"];
+    fechaCitaCtrl.text = arguments["fechaCita"];
+    doctorCtrl.text = DoctorModel.fromJson(arguments["doctor"]).denominacion;
     horaCtrl.text = arguments["hora"];
     isLibre = arguments["isLibre"];
     horaInt = arguments["horaInt"];
     idSede = arguments["idsede"];
     celular = arguments["celular"];
     setHora("00");
-    setFecha(arguments["fechaCita"]);
-    setidDoctor(arguments["iddoctor"]);
+    setFecha(arguments["fechaString"]);
+    setidDoctor(DoctorModel.fromJson(arguments["doctor"]));
     await getSedes();
   }
 
@@ -107,10 +117,11 @@ class CitaCreateController extends GetxController {
   //methods
   Future<void> getSedes() async {
     UsuarioResponsive? user = await _localAuthRepository.currentUser;
+
     if (user!.sedes.length < 2 || !isLibre) {
       if (user.sedes.length == 1) {
         if (idSede != null && idSede != user.sedes[0].idsede) {
-          gotoBackCancel();
+          gotoCitaList();
           DialogController().showDialog001(
               icon: Icons.location_city_outlined,
               title: "Sede",
@@ -188,9 +199,8 @@ class CitaCreateController extends GetxController {
   }
 
   createCita(CitaCreateModel citaCreateModel) async {
-    loginIconState(ProgressState.visible);
     final result = await _citaRepository.createCita(citaCreateModel);
-    await result.when(
+    result.when(
       left: (systemNotification) {
         DialogController().showDialog001(
             icon: Icons.error_outline_outlined,
@@ -200,48 +210,33 @@ class CitaCreateController extends GetxController {
       },
       right: (response) {
         int idcita = response;
-        gotoBackAceptar(
-            idcita: idcita,
-            idpaciente: citaCreateModel.idpaciente,
-            denominacion: denominacion,
-            citaRapidaNombrePaciente: citaCreateModel.citaRapidaNombrePaciente,
-            celular: celular,
-            citaRapidaCelular: citaCreateModel.citaRapidaCelular,
-            hora: citaCreateModel.hora,
-            hora_int: horaInt,
-            isCitaRapida: citaCreateModel.isCitaRapida,
-            idsede: citaCreateModel.idsede,
-            sede: sedeString,
-            razon: citaCreateModel.razon,
-            isOcupado: citaCreateModel.isOcupado);
-        // for (var i = 0; i < carritoController.listItems.length; i++) {
-        //   if (carritoController.listItems[i].hora == horaInt) {
-        //     carritoController.listItems[i].idsede = this.idSede;
-        //     carritoController.listItems[i].sede = this.sedeString;
-        //     carritoController.listItems[i].razon = this.razon;
-        //     carritoController.listItems[i].listCitas.add(CitaItemModel(
-        //       idpaciente: idPaciente,
-        //       celular: celular,
-        //       idcita: idcita,
-        //       hora: hora,
-        //       razon: razon,
-        //       denominacion: denominacion,
-        //       isCitaRapida: isCitaRapida.value,
-        //       citaRapidaCelular: citaCreateModel.citaRapidaCelular,
-        //       citaRapidaNombrePaciente:
-        //           citaCreateModel.citaRapidaNombrePaciente,
-        //     ));
-        //     carritoController.listItems[i].isLibre = false;
-        //     carritoController.listItems[i].isOcupado =
-        //         !isCita.value && !isCitaRapida.value;
-        //     citaListController.update();
-
-        //     break;
-        //   }
-        // }
+        for (var i = 0; i < carritoController.listItems.length; i++) {
+          if (carritoController.listItems[i].hora == horaInt) {
+            carritoController.listItems[i].idsede = this.idSede;
+            carritoController.listItems[i].sede = this.sedeString;
+            carritoController.listItems[i].razon = this.razon;
+            carritoController.listItems[i].listCitas.add(CitaItemModel(
+              idpaciente: idPaciente,
+              celular: celular,
+              idcita: idcita,
+              hora: hora,
+              razon: razon,
+              denominacion: denominacion,
+              isCitaRapida: isCitaRapida.value,
+              citaRapidaCelular: citaCreateModel.citaRapidaCelular,
+              citaRapidaNombrePaciente:
+                  citaCreateModel.citaRapidaNombrePaciente,
+            ));
+            carritoController.listItems[i].isLibre = false;
+            carritoController.listItems[i].isOcupado =
+                !isCita.value && !isCitaRapida.value;
+            citaListController.update();
+            Get.back();
+            break;
+          }
+        }
       },
     );
-    loginIconState(ProgressState.oculto);
   }
 
   void submit(GlobalKey<FormState> formKey) {
@@ -346,11 +341,11 @@ class CitaCreateController extends GetxController {
     });
   }
 
-  void setidDoctor(int value) {
+  void setidDoctor(DoctorModel value) {
     createFormModel.update((val) {
-      val?.iddoctor = value;
+      val?.iddoctor = value.id;
     });
-    idDoctor = value;
+    idDoctor = value.id;
   }
 
   void setFecha(String fecha) {
@@ -369,44 +364,12 @@ class CitaCreateController extends GetxController {
 
   //------------------------------------------------------------------------------------------
   //navigation
-
-  void gotoPacienteCreate() {
-    Get.toNamed(AppRoutes.PACIENTE_CREATE);
-  }
-
-  gotoBackCancel() {
+  void gotoCitaList() {
     Get.back();
   }
 
-  gotoBackAceptar(
-      {required int idcita,
-      required int? idpaciente,
-      required String? denominacion,
-      required String? citaRapidaNombrePaciente,
-      required String? celular,
-      required String? citaRapidaCelular,
-      required String hora,
-      required int hora_int,
-      required bool isCitaRapida,
-      required int? idsede,
-      required String sede,
-      required String? razon,
-      required bool isOcupado}) {
-    Get.back(result: {
-      ConstantsCita.ID_CITA: idcita,
-      ConstantsCita.ID_PACIENTE: idpaciente,
-      ConstantsCita.DENOMINACION: denominacion,
-      ConstantsCita.CITA_RAPIDA_NOMBRE_PACIENTE: citaRapidaNombrePaciente,
-      ConstantsCita.CELULAR: celular,
-      ConstantsCita.CITA_RAPIDA_CELULAR: citaRapidaCelular,
-      ConstantsCita.HORA: hora,
-      ConstantsCita.HORA_INT: horaInt,
-      ConstantsCita.IS_CITA_RAPIDA: isCitaRapida,
-      ConstantsSede.ID_SEDE: idsede,
-      ConstantsSede.SEDE_NOMBRE: sede,
-      ConstantsCita.RAZON: razon,
-      ConstantsCita.IS_OCUPADO: isOcupado,
-    });
+  void gotoPacienteCreate() {
+    Get.toNamed(AppRoutes.PACIENTE_CREATE);
   }
 
   //-------------------------------------------------------------------------------------------------------------

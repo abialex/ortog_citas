@@ -1,17 +1,17 @@
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/hora_model.dart';
+import 'package:ortog_citas/app/data/models/request_models/cita_request_v2.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
+import 'package:ortog_citas/app/data/repository_imp/local/local_auth_repository.dart';
+import 'package:ortog_citas/app/domain/usecases/doctor/get_doctor_by_usuario_id.dart';
+import 'package:ortog_citas/app/ui/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/extensions/date_extends.dart';
-import '../../../../data/models/cita/cita_item_model.dart';
-import '../../../../data/models/cita/hora_model.dart';
 import '../../../../data/models/doctor/doctor_model.dart';
-import '../../../../data/models/request_models/cita_request_v2.dart';
-import '../../../../data/models/usuario/usuario_responsive.dart';
-import '../../../../data/repository_imp/local/local_auth_repository.dart';
 import '../../../../domain/repository/icita_repository.dart';
-import '../../../../domain/usecases/doctor/get_doctor_by_usuario_id.dart';
 import '../../../global_controllers/dialog_controller.dart';
-import '../../../routes/app_routes.dart';
 
 enum ProgressState { oculto, visible }
 
@@ -117,8 +117,7 @@ class CitaListDoctorController extends GetxController {
   void getListHoraModelFilterToday() async {
     DateTime dateNow = DateTime.now();
     if (citaRequest.iddoctor != 0) {
-      citaRequest.date =
-          DateTimeExtensions.toFormattedEEEEdeMMMMdelyyyy(dateNow);
+      citaRequest.date = DateTimeExtensions.toFormattedyyyyMMdd(dateNow);
       loginIconState(ProgressState.visible);
       final result = await _citaRepository.getCitaFilterToday(citaRequest);
       result.when(

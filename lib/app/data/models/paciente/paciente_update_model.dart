@@ -1,3 +1,5 @@
+import 'package:ortog_citas/app/domain/entities/doctor.dart';
+import 'package:ortog_citas/app/domain/entities/paciente.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'paciente_update_model.g.dart';

@@ -1,11 +1,11 @@
+import 'package:ortog_citas/app/core/utils/extensions/date_extends.dart';
+import 'package:ortog_citas/app/core/utils/snackbar.dart';
+import 'package:ortog_citas/app/data/models/paciente/paciente_update_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/utils/extensions/date_extends.dart';
-import '../../../../core/utils/snackbar.dart';
 import '../../../../core/validators/form_validators.dart';
 import '../../../../data/models/contenedor_model.dart';
 import '../../../../data/models/paciente/paciente_item_model.dart';
-import '../../../../data/models/paciente/paciente_update_model.dart';
 import '../../../../domain/repository/icontenedor_repository.dart';
 import '../../../../domain/usecases/paciente/get_byid_paciente.dart';
 import '../../../../domain/usecases/paciente/update_paciente.dart';
@@ -27,9 +27,8 @@ class PacienteUpdateController extends GetxController {
   final GetPacienteByIdUC _getPacienteByIdUC;
 //-----------------------------------------------------RX--------------------------------------------------------
   final form = PacienteUpdateFormModel.initial().obs;
-  Rx<DateTime> initialDate = DateTime(1900, 1, 1).obs;
-  Rx<DateTime> selectedDateFechaNacimiento = DateTime(1900, 1, 1).obs;
 
+  Rx<DateTime> selectDate = DateTime(1900, 1, 1).obs;
   DateTime firstday = DateTime(1900);
   DateTime lastDate = DateTime(2025);
 
@@ -55,7 +54,6 @@ class PacienteUpdateController extends GetxController {
   final antecedentesCtrl = TextEditingController();
   final motivoConsultaCtrl = TextEditingController();
   final correoCtrl = TextEditingController();
-  final dateFechaNacimientoCtrl = TextEditingController();
 
   Rx<ContenedorModel>? generoInit;
   Rx<ContenedorModel>? ocupacionInit;
@@ -109,10 +107,10 @@ class PacienteUpdateController extends GetxController {
           setApellidoMaterno(response.apMaterno);
           setTipoGenero(generoInit?.value);
           setTipoOcupacion(ocupacionInit?.value);
-          setFechaNacimiento(response.fechaNacimiento);
-          selectedDateFechaNacimiento.value =
+          setFechaNacimiento(
+              DateTimeExtensions.toFormatDateTime(response.fechaNacimiento));
+          selectDate.value =
               DateTimeExtensions.toFormatDateTime(response.fechaNacimiento);
-          dateFechaNacimientoCtrl.text = response.fechaNacimiento;
           setTipoDocumento(tipoDocInit?.value);
           setDni(response.dni);
           setCelular(response.celular ?? "");
@@ -134,19 +132,6 @@ class PacienteUpdateController extends GetxController {
   void dispose() {
     super.dispose();
     liberarCarrito();
-    nombresCtrl.dispose();
-    apPaternoCtrl.dispose();
-    apMaternoCtrl.dispose();
-    fechaNacimientoCtrl.dispose();
-    numDocCtrl.dispose();
-    celularCtrl.dispose();
-    domicilioCtrl.dispose();
-    lugarProcedenciaCtrl.dispose();
-    enfermedadActualCtrl.dispose();
-    antecedentesCtrl.dispose();
-    motivoConsultaCtrl.dispose();
-    correoCtrl.dispose();
-    dateFechaNacimientoCtrl.dispose();
   }
 
   //-----------------------------------------------------
@@ -327,9 +312,9 @@ class PacienteUpdateController extends GetxController {
     });
   }
 
-  void setFechaNacimiento(String value) {
+  void setFechaNacimiento(DateTime value) {
     form.update((val) {
-      val?.fechaNacimiento = value;
+      val?.fechaNacimiento = DateTimeExtensions.toFormattedyyyyMMdd(value);
     });
   }
 

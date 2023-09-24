@@ -1,3 +1,5 @@
+import 'package:ortog_citas/app/ui/modules/login/controller.dart';
+import 'package:ortog_citas/app/ui/modules/recurso_humano/paciente_create/controller.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/models/paciente/paciente_item_model.dart';

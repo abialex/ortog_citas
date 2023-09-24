@@ -1,5 +1,5 @@
+import 'package:ortog_citas/app/ui/global_widgets/animation/image_bubble.dart';
 import 'package:firebase_database/firebase_database.dart';
-import '../../../global_widgets/animation/image_bubble.dart';
 import '../../../global_widgets/animation/text_bubble.dart';
 import '../../../global_widgets/drawer_menu/navigation_drawer.dart';
 import '../../../theme/app_colors.dart';

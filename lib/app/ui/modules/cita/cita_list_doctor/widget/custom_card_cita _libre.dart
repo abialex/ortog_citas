@@ -1,5 +1,6 @@
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/hora_model.dart';
 import 'package:flutter/material.dart';
-import '../../../../../data/models/cita/hora_model.dart';
 import '../../../../theme/app_colors.dart';
 
 class CustomCardCitaLibre extends StatelessWidget {

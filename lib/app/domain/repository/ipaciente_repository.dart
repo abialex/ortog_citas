@@ -1,10 +1,11 @@
+import 'package:ortog_citas/app/data/models/paciente/paciente_create_model.dart';
+import 'package:ortog_citas/app/data/models/paciente/paciente_model.dart';
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+
 import '../../data/models/paciente/paciente_create_from_cita_model.dart';
-import '../../data/models/paciente/paciente_create_model.dart';
 import '../../data/models/paciente/paciente_item_model.dart';
-import '../../data/models/paciente/paciente_model.dart';
 import '../../data/models/paciente/paciente_update_model.dart';
 import '../../data/models/request_models/paciente_request.dart';
-import '../../data/models/system_notification.dart';
 import '../either/either.dart';
 
 abstract class IPacienteRepository {

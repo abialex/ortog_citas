@@ -1,7 +1,7 @@
+import 'package:ortog_citas/app/data/models/cita/cita_rapida_item_model.dart';
+import 'package:ortog_citas/app/domain/usecases/cita/get_cita_rapida_use_case.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/models/cita/cita_rapida_item_model.dart';
-import '../../../../domain/usecases/cita/get_cita_rapida_use_case.dart';
 import '../../../global_controllers/carrito_list_controller.dart';
 import 'index.dart';
 

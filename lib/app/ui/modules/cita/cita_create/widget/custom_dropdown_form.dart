@@ -1,8 +1,8 @@
+import 'package:ortog_citas/app/core/utils/style_utils.dart';
+import 'package:ortog_citas/app/ui/global_widgets/labels/custom_label_form_001.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../../core/utils/style_utils.dart';
-import '../../../../global_widgets/labels/custom_label_form_001.dart';
 import '../../../../theme/app_colors.dart';
 
 class CustomDropdownWidget<T> extends StatelessWidget {

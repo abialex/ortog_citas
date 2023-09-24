@@ -1,12 +1,12 @@
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/domain/either/either.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import '../../../../core/network/network_info.dart';
 import '../../../../core/utils/api_exception_handler .dart';
 import '../../../../core/utils/extensions/response_extends.dart';
 import '../../../../core/utils/logging_interceptor.dart';
-import '../../../../domain/either/either.dart';
 import '../../../models/contenedor_model.dart';
-import '../../../models/system_notification.dart';
 
 class ContenedorAPI {
   final Dio _dio = Get.find<Dio>();

@@ -1,8 +1,11 @@
+import 'package:ortog_citas/app/data/models/container/sede_model.dart';
+import 'package:ortog_citas/app/data/models/contenedor_model.dart';
+import 'package:ortog_citas/app/ui/global_widgets/buttons/custom_button_submit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../data/models/contenedor_model.dart';
-import '../../../global_widgets/buttons/custom_button_submit.dart';
-import '../../../global_widgets/date_pickers/custom_date_picker_001.dart';
+
+import '../../../global_widgets/date_pickers/custom_date_picker_002.dart';
 import '../../../global_widgets/divider/custom_divider.dart';
 import '../../../global_widgets/dropdowns/dropdown01/custom_dropdown_form_field_001.dart';
 import '../../../global_widgets/labels/custom_label_form_001.dart';
@@ -73,7 +76,6 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                                 onChanged: _.setNombres,
                                 validators: _.nombresValidators,
                                 keyboardType: TextInputType.text,
-                                inputFormat: InputFormatEnum.letras,
                                 textInputAction: TextInputAction.next,
                                 controller: _.nombresCtrl,
                               )
@@ -103,7 +105,6 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                                 onChanged: _.setApellidoPaterno,
                                 validators: _.apellidoPaternoValidators,
                                 keyboardType: TextInputType.text,
-                                inputFormat: InputFormatEnum.letras,
                                 textInputAction: TextInputAction.next,
                                 controller: _.apellidoPaternoCtrl,
                               )
@@ -133,7 +134,6 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                                 onChanged: _.setApellidoMaterno,
                                 validators: _.apellidoMaternoValidators,
                                 keyboardType: TextInputType.text,
-                                inputFormat: InputFormatEnum.letras,
                                 textInputAction: TextInputAction.next,
                                 controller: _.apellidoMaternoCtrl,
                               )
@@ -197,23 +197,13 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                                 left: 5,
                                 top: 5,
                               ),
-                              CustomDatePicker001(
-                                firstDate: _.initialDate.value,
-                                initialDate: _.selectedDateFechaNacimiento,
-                                hintText:
-                                    'click para seleccionar la fecha de nacimiento',
-                                lastDate: DateTime.now(),
-                                onChanged: _.setFechaNacimiento,
-                                controller: _.dateFechaNacimiento,
-                                validator: _.fechaNacimientoValidators,
+                              CustomDatePicker002(
+                                dateInit: _.selectDate.value,
+                                onChangeDate: _.setFechaNacimiento,
+                                maximunYear: DateTime.now().year,
+                                minimunYear: 1900,
+                                mode: CupertinoDatePickerMode.date,
                               ),
-                              // CustomDatePicker002(
-                              //   dateInit: _. selectDate.value,
-                              //   onChangeDate: _.setFechaNacimiento,
-                              //   maximunYear: DateTime.now().year,
-                              //   minimunYear: 1900,
-                              //   mode: CupertinoDatePickerMode.date,
-                              // ),
                             ],
                           ),
                         )
@@ -259,8 +249,6 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                                 onChanged: _.setNumDocumento,
                                 validators: _.numDocValidators,
                                 keyboardType: TextInputType.number,
-                                inputFormat: InputFormatEnum.numeros,
-                                maxlength: 8,
                                 textInputAction: TextInputAction.next,
                               )
                             ],
@@ -290,8 +278,6 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                                 onChanged: _.setCelular,
                                 validators: (p0) {},
                                 keyboardType: TextInputType.number,
-                                inputFormat: InputFormatEnum.numeros,
-                                maxlength: 9,
                               )
                             ],
                           ),

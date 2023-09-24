@@ -9,10 +9,6 @@ extension DateTimeExtensions on DateTime {
     return DateFormat('yyyy-MM-dd').format(date);
   }
 
-  static String toFormattedEEEEdeMMMMdelyyyy(DateTime date) {
-    return DateFormat('EEEE d \'de\' MMMM \'del\' yyyy', 'ES').format(date);
-  }
-
   static DateTime toFormatDateTime(String value) {
     return DateTime.parse(value);
   }

@@ -1,12 +1,12 @@
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/data/models/usuario/usuario_responsive.dart';
+import 'package:ortog_citas/app/domain/either/either.dart';
 import 'package:get/get.dart';
 // // import 'package:ws_odebin_market_mobile_flutter/app/data/provider/authentication_api.dart';
 // // import 'package:ws_odebin_market_mobile_flutter/app/domain/entities/usuario.dart';
 // // import 'package:ws_odebin_market_mobile_flutter/app/domain/repository/iauthentication_repository.dart';
 
-import '../../../domain/either/either.dart';
 import '../../../domain/repository/iauthentication_repository.dart';
-import '../../models/system_notification.dart';
-import '../../models/usuario/usuario_responsive.dart';
 import '../../provider/api/remote/authentication_api.dart';
 
 class AuthenticationRepository extends IAuthenticationRepository {

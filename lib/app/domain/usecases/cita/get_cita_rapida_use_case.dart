@@ -1,10 +1,10 @@
+import 'package:ortog_citas/app/data/models/cita/cita_rapida_item_model.dart';
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/domain/repository/icita_repository.dart';
 import 'package:get/get.dart';
 
 import '../../../core/usecases/usecase_params.dart';
-import '../../../data/models/cita/cita_rapida_item_model.dart';
-import '../../../data/models/system_notification.dart';
 import '../../either/either.dart';
-import '../../repository/icita_repository.dart';
 
 class GetCitasRapidasUC implements UseCaseParams {
   final ICitaRepository _repository = Get.find<ICitaRepository>();

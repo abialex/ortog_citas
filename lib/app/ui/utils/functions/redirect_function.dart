@@ -47,7 +47,7 @@ class Redirects {
         return RutasDoctor;
 
       default:
-        DialogController().showDialog001(
+        DialogController().showDialog002(
             title: "Rol no encontrado",
             mensaje:
                 "Parece que se recibió un Rol que no está definido en el aplicativo: $rol",

@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
-
-import '../dialog_controller.dart';
 
 class LlamadasController extends GetxController {
   void llamarCelular({required celular}) {

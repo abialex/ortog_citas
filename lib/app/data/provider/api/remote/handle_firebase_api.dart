@@ -1,11 +1,12 @@
 import 'dart:convert';
+
+import 'package:ortog_citas/app/domain/either/either.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/api_exception_handler .dart';
 import '../../../../core/utils/extensions/response_extends.dart';
 import '../../../../core/utils/logging_interceptor.dart';
-import '../../../../domain/either/either.dart';
 import '../../../models/system_notification.dart';
 import '../../../models/user_token_firebase_model.dart';
 

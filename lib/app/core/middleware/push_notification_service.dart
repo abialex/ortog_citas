@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-
-import '../../ui/global_controllers/dialog_controller.dart';
 
 class PushNotificationService {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;

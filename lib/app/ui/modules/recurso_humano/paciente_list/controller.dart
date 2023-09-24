@@ -1,9 +1,9 @@
+import 'package:ortog_citas/app/data/models/paciente/paciente_item_model.dart';
+import 'package:ortog_citas/app/data/models/request_models/paciente_request.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../data/models/contenedor_model.dart';
-import '../../../../data/models/paciente/paciente_item_model.dart';
-import '../../../../data/models/request_models/paciente_request.dart';
 import '../../../../domain/usecases/paciente/get_filter_paciente.dart';
 import '../../../global_controllers/carrito_list_controller.dart';
 import '../../../global_controllers/dialog_controller.dart';
@@ -78,10 +78,10 @@ class PacienteListController extends GetxController {
     result.when(
       left: (systemNotification) {
         DialogController().showDialog001(
-            icon: Icons.error_outline_outlined,
-            title: systemNotification.titulo,
-            mensaje: systemNotification.mensaje,
-            twoOptions: false);
+          icon: Icons.error_outline_outlined,
+          title: systemNotification.titulo,
+          mensaje: systemNotification.mensaje,
+        );
       },
       right: (response) {
         pacientesList.addAll(response);

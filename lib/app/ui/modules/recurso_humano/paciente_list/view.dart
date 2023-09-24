@@ -1,17 +1,20 @@
+import 'package:ortog_citas/app/core/utils/style_utils.dart';
+import 'package:ortog_citas/app/data/models/container/sede_model.dart';
+import 'package:ortog_citas/app/data/models/contenedor_model.dart';
+import 'package:ortog_citas/app/ui/global_widgets/buttons/custom_button_submit.dart';
+import 'package:ortog_citas/app/ui/global_widgets/drawer_menu/navigation_drawer.dart';
+import 'package:ortog_citas/app/ui/modules/recurso_humano/paciente_list/widgets/custom_paciente_item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/utils/style_utils.dart';
 import '../../../global_widgets/date_pickers/custom_date_picker_001.dart';
 import '../../../global_widgets/divider/custom_divider.dart';
-import '../../../global_widgets/drawer_menu/navigation_drawer.dart';
 import '../../../global_widgets/dropdowns/dropdown01/custom_dropdown_form_field_001.dart';
 import '../../../global_widgets/labels/custom_label_form_001.dart';
 import '../../../global_widgets/progressIndicatorCustom/custom_progress.dart';
 import '../../../global_widgets/textFields/text_field_001/custom_text_form_field_001.dart';
 import '../../../theme/app_colors.dart';
 import 'index.dart';
-import 'widgets/custom_paciente_item_card.dart';
 
 class PacienteListPage extends GetWidget<PacienteListController> {
   final formKey = GlobalKey<FormState>();
@@ -50,7 +53,6 @@ class PacienteListPage extends GetWidget<PacienteListController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     flex: 5,
@@ -75,30 +77,28 @@ class PacienteListPage extends GetWidget<PacienteListController> {
                   ),
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          const CustomLabelForm001(
-                            label: "",
-                            left: 5,
-                            top: 10,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        CustomLabelForm001(
+                          label: "",
+                          left: 5,
+                          top: 5,
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                          decoration: BoxDecoration(
+                            color: SlgColors.azul_principal,
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: SlgColors.azul_principal,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: IconButton(
-                              constraints: BoxConstraints(),
-                              onPressed: _.consultarPaciente,
-                              icon: Icon(Icons.search),
-                              color: SlgColors.white,
-                            ),
+                          child: IconButton(
+                            onPressed: _.consultarPaciente,
+                            icon: Icon(Icons.search),
+                            padding: EdgeInsets.zero,
+                            color: SlgColors.white,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   )
                 ],

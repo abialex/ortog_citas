@@ -1,15 +1,15 @@
+import 'package:ortog_citas/app/data/models/cita/cita_rapida_item_model.dart';
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
+import 'package:ortog_citas/app/ui/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../data/models/cita/cita_rapida_item_model.dart';
 import '../../../../data/models/doctor/doctor_model.dart';
 import '../../../../data/models/request_models/cita_request_v1.dart';
-import '../../../../data/models/system_notification.dart';
 import '../../../../domain/repository/icita_repository.dart';
 import '../../../../domain/usecases/cita/get_cita_rapida_use_case.dart';
 import '../../../global_controllers/carrito_list_controller.dart';
-import '../../../global_controllers/dialog_controller.dart';
-import '../../../routes/app_routes.dart';
 
 enum ProgressState { oculto, visible }
 

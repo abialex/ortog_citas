@@ -1,3 +1,4 @@
+import 'package:ortog_citas/app/ui/modules/cita/cita_rapida_list/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../global_widgets/drawer_menu/navigation_drawer.dart';
@@ -5,7 +6,6 @@ import '../../../global_widgets/labels/custom_label_form_001.dart';
 import '../../../global_widgets/progressIndicatorCustom/custom_progress.dart';
 import '../../../global_widgets/textFields/text_field_001/custom_text_form_field_001.dart';
 import '../../../theme/app_colors.dart';
-import 'controller.dart';
 import 'widget/widgets.dart';
 
 class CitaRapidaListPage extends GetWidget<CitaRapidaListController> {
@@ -30,7 +30,6 @@ class CitaRapidaListPage extends GetWidget<CitaRapidaListController> {
           child: Column(
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     flex: 5,
@@ -51,7 +50,6 @@ class CitaRapidaListPage extends GetWidget<CitaRapidaListController> {
                           onChanged: _.setSearch,
                           validators: (p0) {},
                           keyboardType: TextInputType.text,
-                          inputFormat: InputFormatEnum.letras,
                           textInputAction: TextInputAction.next,
                           controller: _.buscarCtrl,
                         )
@@ -66,7 +64,7 @@ class CitaRapidaListPage extends GetWidget<CitaRapidaListController> {
                         CustomLabelForm001(
                           label: "",
                           left: 5,
-                          top: 10,
+                          top: 5,
                         ),
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 0, 0, 0),

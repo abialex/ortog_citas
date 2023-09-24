@@ -1,4 +1,4 @@
-import 'cita_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
 
 class HoraModel {
   HoraModel({

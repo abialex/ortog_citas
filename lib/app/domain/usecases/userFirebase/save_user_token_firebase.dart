@@ -1,9 +1,9 @@
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/domain/repository/ihandle_firebase_repository.dart';
 import 'package:get/get.dart';
 
 import '../../../core/usecases/usecase_params.dart';
-import '../../../data/models/system_notification.dart';
 import '../../either/either.dart';
-import '../../repository/ihandle_firebase_repository.dart';
 
 class CreateUserTokenFirebaseUC implements UseCaseParams {
   final IHandleFirebaseRepository _repository =

@@ -1,3 +1,4 @@
+import 'package:ortog_citas/app/domain/entities/doctor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'sede_model.g.dart';

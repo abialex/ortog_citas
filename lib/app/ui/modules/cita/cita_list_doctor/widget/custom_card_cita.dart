@@ -1,10 +1,10 @@
+import 'package:ortog_citas/app/data/models/cita/cita_item_model.dart';
+import 'package:ortog_citas/app/data/models/cita/hora_model.dart';
+import 'package:ortog_citas/app/ui/global_widgets/divider/custom_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/utils/style_utils.dart';
-import '../../../../../data/models/cita/cita_item_model.dart';
-import '../../../../../data/models/cita/hora_model.dart';
-import '../../../../global_widgets/divider/custom_divider.dart';
 import '../../../../global_widgets/dropdown_bottom_sheet/custom_bottom_sheet.dart';
 import '../../../../theme/app_colors.dart';
 

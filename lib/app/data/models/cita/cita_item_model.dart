@@ -1,4 +1,6 @@
+import 'package:ortog_citas/app/domain/entities/persona.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 import '../../../domain/entities/cita.dart';
 import '../../../domain/entities/usuario.dart';
 

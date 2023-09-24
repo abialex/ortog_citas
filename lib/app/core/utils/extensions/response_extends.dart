@@ -1,10 +1,10 @@
-import 'package:get/get.dart';
 import 'package:ortog_citas/app/core/utils/extensions/string_extends.dart';
+import 'package:get/get.dart';
 import '../../../data/models/response_api_model.dart';
 import '../../../data/models/system_notification.dart';
 import '../../../domain/either/either.dart';
 import '../../../ui/routes/app_routes.dart';
-import '../constants/constants.dart';
+import '../constants.dart';
 
 extension ResponseExtensions on Response {
   static Future<Either<SystemNotification, dynamic>> responseApiFunction(
@@ -27,7 +27,10 @@ extension ResponseExtensions on Response {
         ),
       );
     }
-    if (statusCode == 401) {
+    ResponseApiModel responseApi = ResponseApiModel.fromJson(data);
+    if (statusCode == 200 || statusCode == 201) {
+      return Either.right(responseApi.result);
+    } else if (statusCode == 401) {
       Constants.CloseSesion();
       Get.offAllNamed(AppRoutes.LOGIN);
       return Either.left(
@@ -36,15 +39,6 @@ extension ResponseExtensions on Response {
           mensaje: "Tu sesión ha expirado.",
           detalle: "",
         ),
-      );
-    }
-
-    ResponseApiModel responseApi = ResponseApiModel.fromJson(data);
-    if (statusCode == 200 || statusCode == 201) {
-      return Either.right(responseApi.result);
-    } else if (statusCode == 226) {
-      return Either.right(
-        responseApi.result,
       );
     } else if (statusCode == 404) {
       return Either.left(
