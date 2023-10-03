@@ -72,29 +72,6 @@ class LoginController extends GetxController {
           Redirects.redirectToHome(rol.nombreRol);
           _localAuthRepository.setUserName(usernameText.text);
 
-          if (Platform.isAndroid) {
-            String? token = await PushNotificationService.getTokenFirebase();
-            if (token != null) {
-              final userTokenFirebase = UserTokenFirebaseModel(
-                idusuario: user.id,
-                username: user.username,
-                token: token,
-              );
-              final resultUser =
-                  await _createUserTokenFirebaseUC.call(userTokenFirebase);
-              resultUser.when(left: (systemNotification) {
-                DialogController().showDialog002(
-                  icon: Icons.error,
-                  title: systemNotification.titulo,
-                  mensaje: systemNotification.mensaje,
-                  twoOptions: false,
-                );
-              }, right: (response) {
-                //implements
-              });
-            }
-          }
-
           CustomSnackbar(
             icon: Icon(
               Icons.check,

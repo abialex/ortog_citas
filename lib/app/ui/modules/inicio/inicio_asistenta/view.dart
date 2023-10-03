@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import '../../../../core/utils/style_utils.dart';
 import '../../../global_widgets/animation/image_bubble.dart';
 import '../../../global_widgets/animation/image_swicht.dart';
@@ -197,41 +196,6 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      child: StreamBuilder<DatabaseEvent>(
-        stream: FirebaseDatabase.instance.ref().child(child).onValue,
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if (snapshot.hasData) {
-            DataSnapshot dataSnapshot = snapshot.data!.snapshot;
-            Map<dynamic, dynamic>? dataMap =
-                dataSnapshot.value as Map<dynamic, dynamic>?;
-
-            if (dataMap != null) {
-              List<Widget> widgets = dataMap.entries.map<Widget>((entry) {
-                String key = entry.key.toString();
-                Map<dynamic, dynamic> value =
-                    entry.value as Map<dynamic, dynamic>;
-                return Text(value['campo2']);
-                // Otros elementos de UI que desees mostrar
-              }).toList();
-
-              return ListView.builder(
-                itemCount: widgets.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return widgets[index];
-                },
-              );
-            } else {
-              return Text('No se encontraron datos en la ruta especificada.');
-            }
-          } else if (snapshot.hasError) {
-            return Text('Error al obtener los datos: ${snapshot.error}');
-          } else {
-            return CircularProgressIndicator();
-          }
-        },
-      ),
-    );
+    return Container(height: 300, child: Text("sdsd"));
   }
 }

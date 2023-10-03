@@ -1,13 +1,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-import 'app/core/middleware/push_notification_service.dart';
 import 'app/core/utils/dependency_injection.dart';
 import 'app/data/models/usuario/usuario_responsive.dart';
 import 'app/data/repository_imp/local/local_auth_repository.dart';
@@ -15,9 +11,7 @@ import 'app/my_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isAndroid) {
-    await PushNotificationService.initializeApp();
-  }
+  if (Platform.isAndroid) {}
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

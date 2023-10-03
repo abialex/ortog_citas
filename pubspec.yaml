@@ -40,16 +40,16 @@ dependencies:
   equatable: ^2.0.5
   flutter_secure_storage: ^8.0.0
   get_storage: ^2.1.1
-  intl: ^0.17.0
+  intl: ^0.18.0
   flutter_svg: ^2.0.5
   flutter_slidable: ^3.0.0
   rxdart: ^0.27.7
   flutter_phone_direct_caller: ^2.1.1 
-  cloud_firestore: ^4.8.0
-  firebase_core: ^2.13.1
-  firebase_auth: ^4.6.2
-  firebase_messaging: ^14.6.2
-  firebase_database: ^10.2.2
+  #cloud_firestore: ^4.8.0
+  # firebase_core: ^2.13.1
+  # firebase_auth: ^4.6.2
+  # firebase_messaging: ^14.6.2
+  # firebase_database: ^10.2.2
   syncfusion_flutter_datepicker: ^20.4.54
    # The following adds the Cupertino Icons font to your application.
   firedart: ^0.9.3
