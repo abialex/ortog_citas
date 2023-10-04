@@ -30,10 +30,10 @@ class CustomFieldWidget extends StatelessWidget {
     this.controller,
     this.padding = const EdgeInsets.symmetric(vertical: 0),
     this.styleLabel =
-        const TextStyle(color: SlgColors.white, fontWeight: FontWeight.w500),
+        const TextStyle(color: OrtogColors.white, fontWeight: FontWeight.w500),
     this.styleHint = const TextStyle(
       fontFamily: "Roboto",
-      color: SlgColors.greyWhite,
+      color: OrtogColors.greyWhite,
     ),
     this.isOculto = false,
     this.onPressed,
@@ -68,7 +68,7 @@ class CustomFieldWidget extends StatelessWidget {
             flex: flexField,
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: SlgColors.white),
+                border: Border.all(color: OrtogColors.white),
               ),
               child: SizedBox(
                 height: height,
@@ -111,7 +111,7 @@ class FieldWidget extends StatelessWidget {
       obscureText: isOculto,
       controller: controller,
       style:
-          const TextStyle(color: SlgColors.white, fontSize: StyleUtils.P2_13),
+          const TextStyle(color: OrtogColors.white, fontSize: StyleUtils.P2_13),
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.only(left: StyleUtils.SIZE_LABEL_SPACE_5),

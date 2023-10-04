@@ -17,7 +17,7 @@ class NotificacionesPage extends GetWidget<NotificacionesController> {
         appBar: AppBar(
             centerTitle: true,
             title: Text("Notificaciones"),
-            backgroundColor: SlgColors.azul_principal),
+            backgroundColor: OrtogColors.ortog_color),
         drawer: MenuPrincipal(),
         body: SingleChildScrollView(
           child: Container(

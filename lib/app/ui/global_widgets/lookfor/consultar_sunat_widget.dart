@@ -69,12 +69,12 @@ class ConsultaSunatPage extends GetView<ConsultaSunatController> {
                       margin: const EdgeInsets.only(left: 5, top: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: SlgColors.azul_principal,
+                        color: OrtogColors.ortog_color,
                       ),
                       //color: OdebinColors.azul_principal,
                       child: IconButton(
                           alignment: Alignment.center,
-                          color: SlgColors.white,
+                          color: OrtogColors.white,
                           onPressed: () async {
                             onPressed(await _.consultarNumeroDocumento());
                           },

@@ -20,7 +20,7 @@ class Cita extends GetWidget<CitaListController> {
     return GetBuilder<CitaListController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtogColors.ortog_color,
           centerTitle: true,
           title: Text(
             "Citas",
@@ -85,88 +85,91 @@ class Cita extends GetWidget<CitaListController> {
                   ),
                 ],
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Obx(
-                          () => CustomLabelForm001(
-                            textSize: 20,
-                            fontWeight: FontWeight.bold,
-                            textAlign: TextAlign.center,
-                            label: _.nombreDiaRx.value,
-                            left: 5,
-                            top: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Obx(
-                      () => Visibility(
-                        visible: !_.isVerificadoToday.value,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                              decoration: BoxDecoration(
-                                color: SlgColors.azul_principal,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: IconButton(
-                                icon: Icon(Icons.update),
-                                onPressed: _.getListHoraModelFilterToday,
-                                color: SlgColors.white,
-                              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Obx(
+                            () => CustomLabelForm001(
+                              textSize: 20,
+                              fontWeight: FontWeight.bold,
+                              textAlign: TextAlign.center,
+                              label: _.nombreDiaRx.value,
+                              left: 5,
+                              top: 10,
                             ),
-                          ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Obx(
+                        () => Visibility(
+                          visible: !_.isVerificadoToday.value,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                decoration: BoxDecoration(
+                                  color: OrtogColors.ortog_color,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: IconButton(
+                                  icon: Icon(Icons.update),
+                                  onPressed: _.getListHoraModelFilterToday,
+                                  color: OrtogColors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                          decoration: BoxDecoration(
-                            color: SlgColors.azul_principal,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: IconButton(
-                            icon: Obx(
-                              () => Icon(_.isVerificado.value
-                                  ? Icons.search
-                                  : Icons.saved_search_rounded),
+                    Expanded(
+                      flex: 1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                            decoration: BoxDecoration(
+                              color: OrtogColors.ortog_color,
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            onPressed: _.getListHoraModelFilter,
-                            color: SlgColors.white,
+                            child: IconButton(
+                              icon: Obx(
+                                () => Icon(_.isVerificado.value
+                                    ? Icons.search
+                                    : Icons.saved_search_rounded),
+                              ),
+                              onPressed: _.getListHoraModelFilter,
+                              color: OrtogColors.white,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: CustomToggleList(
-                  top: 5,
-                  heightBox: 25,
-                  isMultiSelect: true,
-                  listBool: _.listbool,
-                  listWords: _.listTime,
+                  ],
                 ),
               ),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.horizontal,
+              //   child: CustomToggleList(
+              //     top: 5,
+              //     heightBox: 25,
+              //     isMultiSelect: true,
+              //     listBool: _.listbool,
+              //     listWords: _.listTime,
+              //   ),
+              // ),
               Expanded(
                 child: Obx(() {
                   if (controller.loginIconState.value == ProgressState.oculto) {
@@ -231,12 +234,12 @@ class Cita extends GetWidget<CitaListController> {
                   Divider(
                     thickness: 0.5,
                     height: 1,
-                    color: SlgColors.dark,
+                    color: OrtogColors.dark,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(flex: 3, child: Text("Clínica SLG")),
+                      Expanded(flex: 3, child: Text("Ortognática")),
                       Expanded(
                         flex: 8,
                         child: Text(_.user.value.persona ?? "NN",

@@ -17,7 +17,7 @@ class CustomCardCitaLibre extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtogColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -48,7 +48,7 @@ class CustomCardCitaLibre extends StatelessWidget {
                         Text(
                           "Libre",
                           style: TextStyle(
-                              color: SlgColors.azul_principal,
+                              color: OrtogColors.ortog_color,
                               fontWeight: FontWeight.bold),
                         ),
                       ],

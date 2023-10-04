@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //para añadir color hex anteceder 0xFF
-class SlgColors {
+class OrtogColors {
   static const Color azulDark = Color.fromARGB(255, 8, 13, 59);
   static const Color purple = Color(0xFF5117AC);
   static const Color green = Color(0xFF20D0C4);
@@ -22,26 +22,25 @@ class SlgColors {
   static const Color icon = Color(0xFFFFCC00);
   static const Color SLGcolor = Color(0xFF00A09B);
 
-  //colores segun prototipos v1.0 14-03-2023
   static const Color oscuro_principal = Color(0xFF272D34);
   static const Color amarillo_principal = Color(0xFFFFEA56);
   static const Color blanco_principal = Color(0xFFFFFFFF);
   static const Color celeste_principal = Color(0xFF36EEE0);
   static const Color naranja_principal = Color(0xFFFB8D2C);
-  static const Color azul_principal = Color(0xFF00A09B);
+  static const Color ortog_color = Color.fromARGB(255, 34, 40, 46);
 
   static const Color amarillo_opac_principal = Color.fromARGB(68, 255, 239, 66);
   static const Color naranja_opac_principal = Color.fromARGB(83, 251, 143, 1);
 }
 
 final slgGradients = [
-  SlgColors.oscuro_principal,
-  SlgColors.azul_principal,
-  SlgColors.celeste_principal,
-  SlgColors.amarillo_principal,
-  SlgColors.naranja_principal,
+  OrtogColors.oscuro_principal,
+  OrtogColors.ortog_color,
+  OrtogColors.celeste_principal,
+  OrtogColors.amarillo_principal,
+  OrtogColors.naranja_principal,
 ];
 final slgGradientsHeader = [
-  SlgColors.azul_principal,
-  SlgColors.celeste_principal,
+  OrtogColors.ortog_color,
+  OrtogColors.celeste_principal,
 ];

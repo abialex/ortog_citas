@@ -31,7 +31,7 @@ class CustomCardCita extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtogColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -62,7 +62,7 @@ class CustomCardCita extends StatelessWidget {
                       Text(
                         itemHoraModel.sede,
                         style: TextStyle(
-                            color: SlgColors.azulDark,
+                            color: OrtogColors.azulDark,
                             fontWeight: FontWeight.bold),
                       ),
                       Column(
@@ -76,7 +76,7 @@ class CustomCardCita extends StatelessWidget {
                                 CustomDivider(
                                     visibility: false,
                                     title: "",
-                                    color: SlgColors.azulDark,
+                                    color: OrtogColors.azulDark,
                                     paddindRigth: 0,
                                     paddindTop: 15),
                                 Row(
@@ -217,7 +217,7 @@ class CustomCardCita extends StatelessWidget {
                         onChanged(itemHoraModel);
                       },
                       icon: Icon(Icons.person_add_alt_1),
-                      color: SlgColors.greyWhite,
+                      color: OrtogColors.greyWhite,
                       iconSize: 25,
                     ),
                   ),
@@ -263,7 +263,7 @@ class CustomCardCita extends StatelessWidget {
                     itemObject: citaItem,
                   )
                 : CustomBottomSheetItem(
-                    color: SlgColors.rojoLight,
+                    color: OrtogColors.rojoLight,
                     title: "Sin Celular",
                     icon: const Icon(Icons.phonelink_erase_outlined),
                     onPressedDynamic: (s) {},
@@ -316,7 +316,7 @@ class CustomCardCita extends StatelessWidget {
                     itemObject: citaItem,
                   )
                 : CustomBottomSheetItem(
-                    color: SlgColors.rojoLight,
+                    color: OrtogColors.rojoLight,
                     title: "Sin Celular",
                     icon: const Icon(Icons.phonelink_erase_outlined),
                     onPressedDynamic: (s) {},

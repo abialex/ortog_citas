@@ -216,7 +216,7 @@ class PacienteUpdateController extends GetxController {
           seconds: 3,
           icon: Icon(
             Icons.check,
-            color: SlgColors.amarillo,
+            color: OrtogColors.amarillo,
           ),
         );
         _carritoPacienteController.modificarItem(

@@ -17,7 +17,7 @@ class PacienteDetallePage extends GetWidget<PacienteDetalleController> {
     return GetBuilder<PacienteDetalleController>(builder: (_) {
       return Scaffold(
           appBar: AppBar(
-            backgroundColor: SlgColors.azul_principal,
+            backgroundColor: OrtogColors.ortog_color,
             title: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -423,7 +423,7 @@ class PacienteDetallePage extends GetWidget<PacienteDetalleController> {
                             Expanded(
                               child: CustomButtonSubmit(
                                 text: "Atras",
-                                color: SlgColors.greyWhite,
+                                color: OrtogColors.greyWhite,
                                 paggingInsetsButtonValue: 15,
                                 onTap: () {
                                   Get.back();

@@ -52,7 +52,7 @@ class CustomDatePicker001 extends StatelessWidget {
           suffixIcon: Icon(
             Icons.calendar_month,
             size: iconSize,
-            color: SlgColors.greyWhite,
+            color: OrtogColors.greyWhite,
           ),
           isCollapsed: true,
           isDense: true,
@@ -77,19 +77,19 @@ class CustomDatePicker001 extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: SlgColors.lightGrey,
+              color: OrtogColors.lightGrey,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: SlgColors.lightGrey,
+              color: OrtogColors.lightGrey,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: SlgColors.dark,
+              color: OrtogColors.dark,
             ),
           ),
         ),

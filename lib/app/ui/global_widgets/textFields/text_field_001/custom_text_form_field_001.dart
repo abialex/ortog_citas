@@ -61,19 +61,19 @@ class TextFormFieldCustom001 extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: SlgColors.lightGrey,
+              color: OrtogColors.lightGrey,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: SlgColors.lightGrey,
+              color: OrtogColors.lightGrey,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: SlgColors.azul_principal,
+              color: OrtogColors.ortog_color,
             ),
           ),
 

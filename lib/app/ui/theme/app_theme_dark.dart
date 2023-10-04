@@ -4,7 +4,7 @@ import 'app_colors.dart';
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: SlgColors.dark,
+  scaffoldBackgroundColor: OrtogColors.dark,
   // appBarTheme: AppBarTheme(
   //   backgroundColor: OdebinColors.amarillo,
   // ),

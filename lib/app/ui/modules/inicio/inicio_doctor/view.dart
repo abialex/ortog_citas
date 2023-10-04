@@ -25,7 +25,7 @@ class InicioDoctorPage extends GetWidget<InicioDoctorController> {
         appBar: AppBar(
             centerTitle: true,
             title: Text(PageEnum.inicio.nombre),
-            backgroundColor: SlgColors.azul_principal),
+            backgroundColor: OrtogColors.ortog_color),
         drawer: MenuPrincipal(),
         body: SingleChildScrollView(
           child: Container(

@@ -11,8 +11,8 @@ class StyleUtils {
   static const double SIZED_PANEL_ITEM = 40;
   static const double SIZED_PANEL_ITEM_ORDER = 90;
 
-  static const Color PRIMARY_OD = SlgColors.azul_principal;
-  static const Color SECONDARY_OD = SlgColors
+  static const Color PRIMARY_OD = OrtogColors.ortog_color;
+  static const Color SECONDARY_OD = OrtogColors
       .oscuro_principal; //WARNING,DANGER,INFO,NORMAL,BACKGROUND,UNNOTICED
 
   static const double H0_40 = 40;

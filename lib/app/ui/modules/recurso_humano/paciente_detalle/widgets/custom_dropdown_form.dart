@@ -25,7 +25,7 @@ class CustomDropdownWidget<T> extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(vertical: 2),
     this.label = "",
     this.styleLabel = const TextStyle(
-        color: SlgColors.dark,
+        color: OrtogColors.dark,
         fontSize: StyleUtils.P1_14,
         fontWeight: FontWeight.w500),
     required this.listItem,
@@ -97,11 +97,11 @@ class _DropDown<T> extends StatelessWidget {
     this.valueInitial,
     this.hintText = "seleccionar...",
     this.hintStyle =
-        const TextStyle(color: SlgColors.dark, fontSize: StyleUtils.P3_12),
+        const TextStyle(color: OrtogColors.dark, fontSize: StyleUtils.P3_12),
     this.labelSelectStyle =
-        const TextStyle(color: SlgColors.dark, fontSize: StyleUtils.P4_11),
+        const TextStyle(color: OrtogColors.dark, fontSize: StyleUtils.P4_11),
     this.selectStyle =
-        const TextStyle(color: SlgColors.dark, fontSize: StyleUtils.P3_12),
+        const TextStyle(color: OrtogColors.dark, fontSize: StyleUtils.P3_12),
     this.iconSize = 25,
     required this.select,
     this.onChanged,
@@ -111,15 +111,15 @@ class _DropDown<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: SlgColors.dark),
+        border: Border.all(color: OrtogColors.dark),
       ),
       child: Obx(
         () => DropdownButtonFormField(
           value: valueInitial,
           isExpanded: true,
           iconSize: iconSize,
-          iconEnabledColor: SlgColors.lightGrey,
-          iconDisabledColor: SlgColors.rojo,
+          iconEnabledColor: OrtogColors.lightGrey,
+          iconDisabledColor: OrtogColors.rojo,
           hint: Center(
             child: Text(
               hintText,

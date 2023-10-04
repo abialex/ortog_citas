@@ -81,7 +81,7 @@ class FloatingActionItem extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(bottom: 12),
         child: FloatingActionButton.extended(
-          backgroundColor: SlgColors.SLGcolor,
+          backgroundColor: OrtogColors.SLGcolor,
           heroTag: option.title,
           onPressed: () {
             option.onPressed();

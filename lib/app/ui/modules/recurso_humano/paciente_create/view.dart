@@ -21,7 +21,7 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
     return GetBuilder<PacienteCreateController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtogColors.ortog_color,
           title: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -389,7 +389,7 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                         Expanded(
                           child: CustomButtonSubmit(
                             text: "Cancelar",
-                            color: SlgColors.greyWhite,
+                            color: OrtogColors.greyWhite,
                             paggingInsetsButtonValue: 5,
                             onTap: _.gotoBack,
                           ),

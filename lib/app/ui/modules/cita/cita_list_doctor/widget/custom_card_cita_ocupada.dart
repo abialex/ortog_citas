@@ -17,7 +17,7 @@ class CustomCardCitaOcupado extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtogColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -48,7 +48,8 @@ class CustomCardCitaOcupado extends StatelessWidget {
                       Text(
                         "Ocupado",
                         style: TextStyle(
-                            color: SlgColors.rojo, fontWeight: FontWeight.bold),
+                            color: OrtogColors.rojo,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 10,
@@ -77,7 +78,7 @@ class CustomCardCitaOcupado extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize: 12,
-                                          color: SlgColors.rojoLight),
+                                          color: OrtogColors.rojoLight),
                                     ),
                                   ),
                                 ],

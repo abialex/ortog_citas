@@ -13,7 +13,7 @@ class CustomDivider extends StatelessWidget {
   const CustomDivider({
     super.key,
     required this.title,
-    this.color = SlgColors.azul_principal,
+    this.color = OrtogColors.ortog_color,
     this.paddindTop = 10,
     this.paddindRigth = 10,
     this.paddingBootom = 10,

@@ -17,7 +17,7 @@ class CitaCreate extends GetWidget<CitaCreateController> {
     return GetBuilder<CitaCreateController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtogColors.ortog_color,
           title: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -257,14 +257,14 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                                       ),
                                       Container(
                                           decoration: BoxDecoration(
-                                              color: SlgColors.azul_principal,
+                                              color: OrtogColors.ortog_color,
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: IconButton(
                                             constraints: BoxConstraints(),
                                             onPressed: _.getPacienteByDni,
                                             icon: Icon(Icons.search),
-                                            color: SlgColors.white,
+                                            color: OrtogColors.white,
                                           ))
                                     ],
                                   ),
@@ -285,14 +285,14 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                                       ),
                                       Container(
                                           decoration: BoxDecoration(
-                                              color: SlgColors.azul_principal,
+                                              color: OrtogColors.ortog_color,
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: IconButton(
                                             constraints: BoxConstraints(),
                                             onPressed: _.gotoPacienteCreate,
                                             icon: Icon(Icons.person_add),
-                                            color: SlgColors.white,
+                                            color: OrtogColors.white,
                                           ))
                                     ],
                                   ),
@@ -420,7 +420,7 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                       Expanded(
                         child: CustomButtonSubmit(
                           text: "Cancelar",
-                          color: SlgColors.greyWhite,
+                          color: OrtogColors.greyWhite,
                           paggingInsetsButtonValue: 5,
                           onTap: _.gotoCitaList,
                         ),

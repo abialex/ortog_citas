@@ -158,7 +158,7 @@ class CitaCreateController extends GetxController {
       snackbar.showSnackBar(
         title: "DNI",
         message: "Ingrese un DNI válido",
-        color: SlgColors.amarillo,
+        color: OrtogColors.rojo,
       );
       return;
     }
@@ -177,8 +177,9 @@ class CitaCreateController extends GetxController {
         if (response != null) {
           snackbar.showSnackBar(
             title: "Paciente",
-            message: response.nombres,
-            color: SlgColors.greenDark,
+            message:
+                "${response.nombres} ${response.apPaterno} ${response.apMaterno}",
+            color: OrtogColors.SLGcolor,
           );
           isVerificado = true;
           setidPaciente(response.id,
@@ -190,7 +191,7 @@ class CitaCreateController extends GetxController {
           snackbar.showSnackBar(
             title: "DNI",
             message: "No está registrado",
-            color: SlgColors.amarillo,
+            color: OrtogColors.amarillo,
           );
           pacienteCtrl.text = "";
         }
@@ -247,7 +248,7 @@ class CitaCreateController extends GetxController {
         snackbar.showSnackBar(
             title: "Paciente",
             message: "No ha seleccionado un Paciente",
-            color: SlgColors.amarillo);
+            color: OrtogColors.amarillo);
         return;
       }
       late CitaCreateModel citaCreateModel;

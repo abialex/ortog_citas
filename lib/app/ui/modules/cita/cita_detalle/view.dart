@@ -14,7 +14,7 @@ class CitaDetallePage extends GetWidget<CitaDetalleController> {
     return GetBuilder<CitaDetalleController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtogColors.ortog_color,
           title: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,7 +92,7 @@ class CitaDetallePage extends GetWidget<CitaDetalleController> {
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: SlgColors.azul_principal,
+                                            color: OrtogColors.ortog_color,
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
@@ -103,7 +103,7 @@ class CitaDetallePage extends GetWidget<CitaDetalleController> {
                                             constraints: BoxConstraints(),
                                             icon:
                                                 Icon(Icons.add_alert_outlined),
-                                            color: SlgColors.white,
+                                            color: OrtogColors.white,
                                           ),
                                         )
                                       ],
@@ -303,7 +303,7 @@ class CitaDetallePage extends GetWidget<CitaDetalleController> {
                           Expanded(
                             child: CustomButtonSubmit(
                               text: "Atras",
-                              color: SlgColors.greyWhite,
+                              color: OrtogColors.greyWhite,
                               margin: EdgeInsets.only(top: 5),
                               paggingInsetsButtonValue: 5,
                               onTap: () {

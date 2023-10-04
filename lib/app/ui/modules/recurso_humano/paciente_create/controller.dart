@@ -150,7 +150,7 @@ class PacienteCreateController extends GetxController {
           seconds: 3,
           icon: Icon(
             Icons.warning,
-            color: SlgColors.amarillo,
+            color: OrtogColors.amarillo,
           ),
         );
         _carritoPacienteController.addItem(PacienteItemModel(

@@ -13,7 +13,7 @@ class LoginPage extends GetWidget<LoginController> {
   Widget build(BuildContext context) {
     return GetBuilder<LoginController>(builder: (_) {
       return Scaffold(
-        backgroundColor: SlgColors.lightGrey,
+        backgroundColor: OrtogColors.white,
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2.5),
           child: Row(

@@ -7,6 +7,7 @@ import 'package:ortog_citas/app/domain/repository/iauthentication_repository.dar
 import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ortog_citas/app/ui/theme/app_colors.dart';
 import '../../../core/middleware/push_notification_service.dart';
 import '../../../data/models/container/rol_model.dart';
 import '../../../domain/usecases/userFirebase/save_user_token_firebase.dart';
@@ -23,7 +24,7 @@ class LoginController extends GetxController {
 
 //-----------------------------------------------------RX---------------------------------------------------------
   RxBool oculto = true.obs;
-  final lastUpdate = "11/07/2023";
+  final lastUpdate = "03/10/2023";
   final version = "1.0.0";
 
 //-----------------------------------------------------RX FIN---------------------------------------------------------
@@ -99,13 +100,20 @@ class LoginController extends GetxController {
               Icons.check,
               color: Colors.greenAccent,
             ),
+            backgroundColor: OrtogColors.SLGcolor,
             title: "Bienvenido",
             message: "${user.persona ?? "NN"}",
           ).showSnacbar();
         } else {
           CustomSnackbar customSnackbar = CustomSnackbar(
+              icon: Icon(
+                Icons.warning,
+                color: OrtogColors.white,
+              ),
+              backgroundColor: OrtogColors.rojo,
               title: "Credenciales incorrectas",
               message: "Vuelva a ingresar sus datos");
+
           customSnackbar.showSnacbar();
         }
       },

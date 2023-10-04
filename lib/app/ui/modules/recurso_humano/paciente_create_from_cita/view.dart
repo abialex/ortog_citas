@@ -21,7 +21,7 @@ class PacienteCreateFromCitaPage
     return GetBuilder<PacienteCreateFromCitaController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtogColors.ortog_color,
           title: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +49,7 @@ class PacienteCreateFromCitaPage
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: SlgColors.greyWhite),
+                    border: Border.all(color: OrtogColors.greyWhite),
                   ),
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   child: Column(
@@ -559,7 +559,7 @@ class PacienteCreateFromCitaPage
                               Expanded(
                                 child: CustomButtonSubmit(
                                   text: "Cancelar",
-                                  color: SlgColors.greyWhite,
+                                  color: OrtogColors.greyWhite,
                                   paggingInsetsButtonValue: 5,
                                   onTap: _.gotoBackCancel,
                                 ),

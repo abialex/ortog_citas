@@ -83,7 +83,7 @@ class CustomBottomSheetItem<O> extends StatelessWidget {
       required this.icon,
       required this.itemObject,
       required this.onPressedDynamic,
-      this.color = SlgColors.azul_principal});
+      this.color = OrtogColors.ortog_color});
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class CustomBottomSheetItem<O> extends StatelessWidget {
             child: IconButton(
               onPressed: () => onPressedDynamic(itemObject),
               icon: icon,
-              color: SlgColors.blanco_principal,
+              color: OrtogColors.blanco_principal,
             ),
           ),
           const SizedBox(

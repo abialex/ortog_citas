@@ -26,7 +26,7 @@ class CustomCardCita extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtogColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -57,7 +57,7 @@ class CustomCardCita extends StatelessWidget {
                       Text(
                         itemHoraModel.sede,
                         style: TextStyle(
-                            color: SlgColors.azulDark,
+                            color: OrtogColors.azulDark,
                             fontWeight: FontWeight.bold),
                       ),
                       Column(
@@ -70,7 +70,7 @@ class CustomCardCita extends StatelessWidget {
                               CustomDivider(
                                   visibility: false,
                                   title: "",
-                                  color: SlgColors.azulDark,
+                                  color: OrtogColors.azulDark,
                                   paddindRigth: 0,
                                   paddindTop: 15),
                               Row(
