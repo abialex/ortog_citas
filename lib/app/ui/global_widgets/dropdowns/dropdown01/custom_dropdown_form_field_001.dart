@@ -56,19 +56,19 @@ class CustomDropdownButtonFormField<T> extends StatelessWidget {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
-                  color: SlgColors.lightGrey,
+                  color: OrtognaticaColors.lightGrey,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
-                  color: SlgColors.lightGrey,
+                  color: OrtognaticaColors.lightGrey,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
-                  color: SlgColors.azul_principal,
+                  color: OrtognaticaColors.OrtogColor,
                 ),
               ),
               // errorBorder: OutlineInputBorder(

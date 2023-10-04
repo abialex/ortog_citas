@@ -18,7 +18,7 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
     return GetBuilder<PacienteUpdateController>(builder: (_) {
       return Scaffold(
           appBar: AppBar(
-            backgroundColor: SlgColors.azul_principal,
+            backgroundColor: OrtognaticaColors.OrtogColor,
             title: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -469,7 +469,7 @@ class PacienteUpdatePage extends GetWidget<PacienteUpdateController> {
                             Expanded(
                               child: CustomButtonSubmit(
                                 text: "Cancelar",
-                                color: SlgColors.greyWhite,
+                                color: OrtognaticaColors.greyWhite,
                                 paggingInsetsButtonValue: 5,
                                 onTap: () {
                                   Get.back();

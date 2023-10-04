@@ -16,7 +16,7 @@ class CitaListDoctorPage extends GetWidget<CitaListDoctorController> {
     return GetBuilder<CitaListDoctorController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtognaticaColors.OrtogColor,
           centerTitle: true,
           title: Text(
             "Citas",
@@ -108,13 +108,13 @@ class CitaListDoctorPage extends GetWidget<CitaListDoctorController> {
                             Container(
                               margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                               decoration: BoxDecoration(
-                                color: SlgColors.azul_principal,
+                                color: OrtognaticaColors.OrtogColor,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: IconButton(
                                 icon: Icon(Icons.update),
                                 onPressed: _.getListHoraModelFilterToday,
-                                color: SlgColors.white,
+                                color: OrtognaticaColors.white,
                               ),
                             ),
                           ],
@@ -130,7 +130,7 @@ class CitaListDoctorPage extends GetWidget<CitaListDoctorController> {
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                           decoration: BoxDecoration(
-                            color: SlgColors.azul_principal,
+                            color: OrtognaticaColors.OrtogColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: IconButton(
@@ -140,7 +140,7 @@ class CitaListDoctorPage extends GetWidget<CitaListDoctorController> {
                                   : Icons.saved_search_rounded),
                             ),
                             onPressed: _.getListHoraModelFilter,
-                            color: SlgColors.white,
+                            color: OrtognaticaColors.white,
                           ),
                         ),
                       ],
@@ -210,12 +210,12 @@ class CitaListDoctorPage extends GetWidget<CitaListDoctorController> {
                   Divider(
                     thickness: 0.5,
                     height: 1,
-                    color: SlgColors.dark,
+                    color: OrtognaticaColors.dark,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(flex: 3, child: Text("Clínica SLG")),
+                      Expanded(flex: 3, child: Text("Ortognática")),
                       Expanded(
                         flex: 8,
                         child: Text(_.user.value.username,

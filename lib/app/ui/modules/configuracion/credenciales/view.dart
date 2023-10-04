@@ -15,7 +15,7 @@ class CredencialesPage extends GetWidget<CredencialesController> {
         appBar: AppBar(
             centerTitle: true,
             title: Text("Credenciales"),
-            backgroundColor: SlgColors.azul_principal),
+            backgroundColor: OrtognaticaColors.OrtogColor),
         drawer: MenuPrincipal(),
         body: SingleChildScrollView(
           child: Container(

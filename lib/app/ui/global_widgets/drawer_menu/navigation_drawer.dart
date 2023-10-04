@@ -29,14 +29,16 @@ class MenuPrincipal extends StatelessWidget {
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
               ),
               SafeArea(
-                child: SizedBox(
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
                   width: double.infinity,
-                  height: 130,
+                  height: 120,
                   child: CircleAvatar(
-                    backgroundColor: SlgColors.azul_principal,
+                    backgroundColor: OrtognaticaColors.OrtogColor,
                     child: Text(
                       (_.user?.persona ?? "NN").substring(0, 2),
-                      style: TextStyle(fontSize: 50, color: SlgColors.white),
+                      style: TextStyle(
+                          fontSize: 50, color: OrtognaticaColors.white),
                     ),
                   ),
                 ),
@@ -46,20 +48,20 @@ class MenuPrincipal extends StatelessWidget {
                   () => ListView.separated(
                       physics: const BouncingScrollPhysics(),
                       separatorBuilder: (context, i) =>
-                          const Divider(color: SlgColors.azul_principal),
+                          const Divider(color: OrtognaticaColors.OrtogColor),
                       itemCount: _.listRutes.length,
                       itemBuilder: (context, i) {
                         bool isPageSelected =
                             Get.currentRoute == _.listRutes[i].routePage;
                         return ListTile(
-                          selectedTileColor: SlgColors.grey,
+                          selectedTileColor: OrtognaticaColors.grey,
                           selected: isPageSelected,
-                          selectedColor: SlgColors.white,
+                          selectedColor: OrtognaticaColors.white,
                           leading: Icon(_.listRutes[i].icon,
-                              color: SlgColors.azul_principal),
+                              color: OrtognaticaColors.OrtogColor),
                           title: Text(_.listRutes[i].titulo),
                           trailing: const Icon(Icons.chevron_right,
-                              color: SlgColors.azul_principal),
+                              color: OrtognaticaColors.OrtogColor),
                           onTap: () {
                             if (isPageSelected) {
                               Get.back();
@@ -74,18 +76,18 @@ class MenuPrincipal extends StatelessWidget {
               ListTile(
                 leading: const Icon(
                   Icons.sunny,
-                  color: SlgColors.azul_principal,
+                  color: OrtognaticaColors.OrtogColor,
                 ),
                 title: const Text('Modo Oscuro'),
                 trailing: Obx(() => Switch.adaptive(
                       value: _.isThemeDark,
-                      activeColor: SlgColors.azul_principal,
+                      activeColor: OrtognaticaColors.OrtogColor,
                       onChanged: (value) => _.changeTheme(),
                     )),
               ),
               ListTile(
-                leading:
-                    const Icon(Icons.logout, color: SlgColors.azul_principal),
+                leading: const Icon(Icons.logout,
+                    color: OrtognaticaColors.OrtogColor),
                 title: const Text('Cerrar sesión'),
                 onTap: () {
                   DialogController().showDialog001(

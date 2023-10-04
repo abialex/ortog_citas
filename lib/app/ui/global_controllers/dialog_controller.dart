@@ -95,7 +95,7 @@ class DialogController extends GetxController {
                                 margin: EdgeInsets.symmetric(horizontal: 5),
                                 paggingInsetsVerticalTextValue: 15,
                                 paggingInsetsButtonValue: 5,
-                                color: SlgColors.lightGrey,
+                                color: OrtognaticaColors.lightGrey,
                                 text: "CANCELAR"),
                           ),
                         ),
@@ -119,12 +119,12 @@ class DialogController extends GetxController {
             Positioned(
               top: -45,
               child: CircleAvatar(
-                backgroundColor: SlgColors.azul_principal,
+                backgroundColor: OrtognaticaColors.OrtogColor,
                 radius: 45,
                 child: Icon(
                   icon,
                   size: 45,
-                  color: SlgColors.white,
+                  color: OrtognaticaColors.white,
                 ),
               ),
             )
@@ -223,7 +223,7 @@ class DialogController extends GetxController {
                                 },
                                 margin: EdgeInsets.symmetric(horizontal: 5),
                                 paggingInsetsButtonValue: 5,
-                                color: SlgColors.lightGrey,
+                                color: OrtognaticaColors.lightGrey,
                                 text: "CANCELAR"),
                           ),
                         ),
@@ -246,12 +246,12 @@ class DialogController extends GetxController {
             Positioned(
               top: -45,
               child: CircleAvatar(
-                backgroundColor: SlgColors.azul_principal,
+                backgroundColor: OrtognaticaColors.OrtogColor,
                 radius: 45,
                 child: Icon(
                   icon,
                   size: 45,
-                  color: SlgColors.white,
+                  color: OrtognaticaColors.white,
                 ),
               ),
             )

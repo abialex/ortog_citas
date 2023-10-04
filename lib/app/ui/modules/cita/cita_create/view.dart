@@ -18,7 +18,7 @@ class CitaCreate extends GetWidget<CitaCreateController> {
     return GetBuilder<CitaCreateController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtognaticaColors.OrtogColor,
           title: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,73 +41,379 @@ class CitaCreate extends GetWidget<CitaCreateController> {
           children: [
             Container(
               padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    children: [
-                      CustomDivider(
-                        paddindTop: 15,
-                        title: 'Horario, doctor y sede',
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    CustomDivider(
+                      paddindTop: 15,
+                      title: 'Horario y doctor',
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CustomLabelForm001(
+                                fontWeight: FontWeight.bold,
+                                label: "Fecha de la cita:",
+                                left: 5,
+                                top: 15,
+                              ),
+                              CustomLabelForm001(
+                                label: _.fechaCitaCtrl.text,
+                                left: 5,
+                                top: 15,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CustomLabelForm001(
+                                fontWeight: FontWeight.bold,
+                                label: "Doctor:",
+                                left: 5,
+                                top: 15,
+                              ),
+                              CustomLabelForm001(
+                                label: _.doctorCtrl.text,
+                                left: 5,
+                                top: 15,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [],
+                    ),
+                    Obx(
+                      () => Visibility(
+                        visible: _.isCita.value || _.isCitaRapida.value,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Expanded(
+                            //   child: Column(
+                            //     crossAxisAlignment:
+                            //         CrossAxisAlignment.stretch,
+                            //     children: [
+                            //       CustomLabelForm001(
+                            //         label: "Sede:",
+                            //         left: 5,
+                            //         top: 5,
+                            //       ),
+                            //       CustomDropdownButtonFormField<SedeModel>(
+                            //         value: _.sedeModelInit?.value,
+                            //         items: _.sedeList,
+                            //         hintText: "selecciona una Sede",
+                            //         onChanged: _.setSede,
+                            //         validators: _.sedeValidators,
+                            //         height: 25,
+                            //       ),
+                            //     ],
+                            //   ),
+                            // )
+                          ],
+                        ),
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CustomLabelForm001(
+                                fontWeight: FontWeight.bold,
+                                label: "Hora:",
+                                left: 5,
+                                top: 5,
+                              ),
+                              CustomLabelForm001(
+                                label: _.horaCtrl.text,
+                                left: 15,
+                                top: 5,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CustomLabelForm001(
+                                fontWeight: FontWeight.bold,
+                                label: "Minuto:",
+                                left: 5,
+                                top: 5,
+                              ),
+                              TextFormFieldCustom001(
+                                maxlength: 2,
+                                textAlign: TextAlign.center,
+                                hintText: '00',
+                                keyboardType: TextInputType.number,
+                                inputFormat: InputFormatEnum.numeros,
+                                onChanged: _.setHora,
+                                validators: _.minutoValidators,
+                                icon: Icon(Icons.alarm_on),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    CustomDivider(
+                      paddindTop: 5,
+                      title: 'Datos de la cita',
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.centerLeft,
+                            padding: EdgeInsets.zero,
+                            child: CustomToggleList(
+                              top: 10,
+                              botoom: 5,
+                              listBool: _.isLibre
+                                  ? [
+                                      false.obs,
+                                      _.isCitaRapida,
+                                      _.isCita,
+                                    ]
+                                  : [_.isCitaRapida, _.isCita],
+                              listWords: _.isLibre
+                                  ? [
+                                      " OCUPADO ",
+                                      " CITA SIMPLE ",
+                                      "     CITA     "
+                                    ]
+                                  : [" CITA SIMPLE ", "     CITA     "],
+                              isMultiSelect: false,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: Column(
                         children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                          Obx(
+                            () => Column(
                               children: [
-                                CustomLabelForm001(
-                                  label: "Fecha de la cita:",
-                                  left: 5,
-                                  top: 16,
+                                Visibility(
+                                  visible: _.isCita.value,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        flex: 4,
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              const CustomLabelForm001(
+                                                label: 'Número de Documento:',
+                                                left: 5,
+                                                top: 5,
+                                              ),
+                                              TextFormFieldCustom001(
+                                                maxlength: 8,
+                                                controller: _.dniCtrl,
+                                                icon: Icon(
+                                                    Icons.description_outlined),
+                                                hintText: 'Ingrese DNI',
+                                                keyboardType:
+                                                    TextInputType.number,
+                                                inputFormat:
+                                                    InputFormatEnum.numeros,
+                                                onChanged: (String s) {},
+                                                validators: _.dniValidators,
+                                                textInputAction: null,
+                                                //value: 22,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 5),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              const CustomLabelForm001(
+                                                label: '',
+                                                left: 5,
+                                                top: 10,
+                                              ),
+                                              Container(
+                                                  decoration: BoxDecoration(
+                                                      color: OrtognaticaColors
+                                                          .OrtogColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: IconButton(
+                                                    constraints:
+                                                        BoxConstraints(),
+                                                    onPressed:
+                                                        _.getPacienteByDni,
+                                                    icon: Icon(Icons.search),
+                                                    color:
+                                                        OrtognaticaColors.white,
+                                                  ))
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          padding: EdgeInsets.only(left: 5),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              const CustomLabelForm001(
+                                                label: '',
+                                                left: 5,
+                                                top: 10,
+                                              ),
+                                              Container(
+                                                  decoration: BoxDecoration(
+                                                      color: OrtognaticaColors
+                                                          .OrtogColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: IconButton(
+                                                    constraints:
+                                                        BoxConstraints(),
+                                                    onPressed:
+                                                        _.gotoPacienteCreate,
+                                                    icon:
+                                                        Icon(Icons.person_add),
+                                                    color:
+                                                        OrtognaticaColors.white,
+                                                  ))
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                TextFormFieldCustom001(
-                                  controller: _.fechaCitaCtrl,
-                                  isEnabled: false,
-                                  textAlign: TextAlign.center,
-                                  icon: Icon(Icons.calendar_month),
-                                  hintText: "",
-                                  onChanged: (p0) {},
-                                  validators: (p0) {},
-                                  keyboardType: TextInputType.none,
+                                Visibility(
+                                  visible: _.isCita.value,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            CustomLabelForm001(
+                                              label: "Paciente:",
+                                              left: 5,
+                                              top: 5,
+                                            ),
+                                            CustomLabelForm001(
+                                              label: _.pacienteCtrl.text.isEmpty
+                                                  ? "--"
+                                                  : _.pacienteCtrl.text,
+                                              left: 5,
+                                              top: 5,
+                                            ),
+                                            SizedBox(
+                                              height: 15,
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: _.isCitaRapida.value,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            CustomLabelForm001(
+                                              label: "Nombre del paciente:",
+                                              left: 5,
+                                              top: 5,
+                                            ),
+                                            TextFormFieldCustom001(
+                                              //controller: _.pacienteCtrl,
+                                              icon: Icon(Icons.person_add_alt),
+                                              hintText:
+                                                  "Ingrese nombres del paciente",
+                                              onChanged:
+                                                  _.setCitaRapidaNombrePaciente,
+                                              validators:
+                                                  _.pacienteNombreValidators,
+                                              keyboardType: TextInputType.text,
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: _.isCitaRapida.value,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            CustomLabelForm001(
+                                              label: "Celular:",
+                                              left: 5,
+                                              top: 5,
+                                            ),
+                                            TextFormFieldCustom001(
+                                              maxlength: 9,
+                                              icon: Icon(Icons.phone),
+                                              hintText: "Ingrese celular",
+                                              onChanged: _.setCitaRapidaCelular,
+                                              validators: (p0) {},
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              inputFormat:
+                                                  InputFormatEnum.numeros,
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 )
                               ],
                             ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                CustomLabelForm001(
-                                  label: "Doctor:",
-                                  left: 5,
-                                  top: 5,
-                                ),
-                                TextFormFieldCustom001(
-                                  textAlign: TextAlign.center,
-                                  controller: _.doctorCtrl,
-                                  isEnabled: false,
-                                  icon: Icon(Icons.person_outline_sharp),
-                                  hintText: "",
-                                  onChanged: (p0) {},
-                                  validators: (p0) {},
-                                  keyboardType: null,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      Obx(
-                        () => Visibility(
-                          visible: _.isCita.value || _.isCitaRapida.value,
-                          child: Row(
+                          ),
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
@@ -116,347 +422,49 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     CustomLabelForm001(
-                                      label: "Sede:",
+                                      label: "Razón:",
                                       left: 5,
                                       top: 5,
                                     ),
-                                    CustomDropdownButtonFormField<SedeModel>(
-                                      value: _.sedeModelInit?.value,
-                                      items: _.sedeList,
-                                      hintText: "selecciona una Sede",
-                                      onChanged: _.setSede,
-                                      validators: _.sedeValidators,
-                                      height: 25,
-                                    ),
+                                    TextFormFieldCustom001(
+                                      icon: Icon(Icons.question_mark),
+                                      hintText: "Ingrese una razón",
+                                      onChanged: _.setRazon,
+                                      validators: _.razonValidators,
+                                      keyboardType: TextInputType.text,
+                                      textInputAction: TextInputAction.next,
+                                    )
                                   ],
                                 ),
                               )
                             ],
                           ),
-                        ),
+                        ],
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                CustomLabelForm001(
-                                  label: "Hora:",
-                                  left: 5,
-                                  top: 5,
-                                ),
-                                TextFormFieldCustom001(
-                                  textAlign: TextAlign.center,
-                                  isEnabled: false,
-                                  hintText: '',
-                                  keyboardType: null,
-                                  onChanged: (String) {},
-                                  validators: (String) {},
-                                  icon: Icon(Icons.alarm),
-                                  controller: _.horaCtrl,
-                                )
-                              ],
-                            ),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: CustomButtonSubmit(
+                            text: "Cancelar",
+                            color: OrtognaticaColors.greyWhite,
+                            paggingInsetsButtonValue: 5,
+                            onTap: _.gotoBackCancel,
                           ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                CustomLabelForm001(
-                                  label: "Minuto:",
-                                  left: 5,
-                                  top: 5,
-                                ),
-                                TextFormFieldCustom001(
-                                  maxlength: 2,
-                                  textAlign: TextAlign.center,
-                                  hintText: '00',
-                                  keyboardType: TextInputType.number,
-                                  inputFormat: InputFormatEnum.numeros,
-                                  onChanged: _.setHora,
-                                  validators: _.minutoValidators,
-                                  icon: Icon(Icons.alarm_on),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      CustomDivider(
-                        paddindTop: 15,
-                        title: 'Datos de la cita',
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.centerLeft,
-                              padding: EdgeInsets.zero,
-                              child: CustomToggleList(
-                                top: 10,
-                                botoom: 5,
-                                listBool: _.isLibre
-                                    ? [
-                                        false.obs,
-                                        _.isCita,
-                                        _.isCitaRapida,
-                                      ]
-                                    : [_.isCita, _.isCitaRapida],
-                                listWords: _.isLibre
-                                    ? [
-                                        "OCUPADO",
-                                        "      CITA      ",
-                                        "CITA RÁPIDA"
-                                      ]
-                                    : ["      CITA      ", "CITA RÁPIDA"],
-                                isMultiSelect: false,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Obx(
-                        () => Column(
-                          children: [
-                            Visibility(
-                              visible: _.isCita.value,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    flex: 4,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        const CustomLabelForm001(
-                                          label: 'Número de Documento:',
-                                          left: 5,
-                                          top: 5,
-                                        ),
-                                        TextFormFieldCustom001(
-                                          maxlength: 8,
-                                          controller: _.dniCtrl,
-                                          icon:
-                                              Icon(Icons.description_outlined),
-                                          hintText: 'Ingrese DNI',
-                                          keyboardType: TextInputType.number,
-                                          inputFormat: InputFormatEnum.numeros,
-                                          onChanged: (String s) {},
-                                          validators: _.dniValidators,
-                                          textInputAction: null,
-                                          //value: 22,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 5),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: [
-                                          const CustomLabelForm001(
-                                            label: '',
-                                            left: 5,
-                                            top: 10,
-                                          ),
-                                          Container(
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      SlgColors.azul_principal,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: IconButton(
-                                                constraints: BoxConstraints(),
-                                                onPressed: _.getPacienteByDni,
-                                                icon: Icon(Icons.search),
-                                                color: SlgColors.white,
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(
-                                      padding: EdgeInsets.only(left: 5),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        children: [
-                                          const CustomLabelForm001(
-                                            label: '',
-                                            left: 5,
-                                            top: 10,
-                                          ),
-                                          Container(
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      SlgColors.azul_principal,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: IconButton(
-                                                constraints: BoxConstraints(),
-                                                onPressed: _.gotoPacienteCreate,
-                                                icon: Icon(Icons.person_add),
-                                                color: SlgColors.white,
-                                              ))
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Visibility(
-                              visible: _.isCita.value,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        CustomLabelForm001(
-                                          label: "Paciente:",
-                                          left: 5,
-                                          top: 5,
-                                        ),
-                                        TextFormFieldCustom001(
-                                          isEnabled: false,
-                                          controller: _.pacienteCtrl,
-                                          icon: Icon(Icons.person_add_alt),
-                                          hintText: "",
-                                          onChanged: (p0) {},
-                                          validators: (p0) {},
-                                          keyboardType: TextInputType.text,
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Visibility(
-                              visible: _.isCitaRapida.value,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        CustomLabelForm001(
-                                          label: "Nombre del paciente:",
-                                          left: 5,
-                                          top: 5,
-                                        ),
-                                        TextFormFieldCustom001(
-                                          //controller: _.pacienteCtrl,
-                                          icon: Icon(Icons.person_add_alt),
-                                          hintText:
-                                              "Ingrese nombres del paciente",
-                                          onChanged:
-                                              _.setCitaRapidaNombrePaciente,
-                                          validators:
-                                              _.pacienteNombreValidators,
-                                          keyboardType: TextInputType.text,
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Visibility(
-                              visible: _.isCitaRapida.value,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        CustomLabelForm001(
-                                          label: "Celular:",
-                                          left: 5,
-                                          top: 5,
-                                        ),
-                                        TextFormFieldCustom001(
-                                          maxlength: 9,
-                                          icon: Icon(Icons.phone),
-                                          hintText: "Ingrese celular",
-                                          onChanged: _.setCitaRapidaCelular,
-                                          validators: (p0) {},
-                                          keyboardType: TextInputType.number,
-                                          inputFormat: InputFormatEnum.numeros,
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
                         ),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                CustomLabelForm001(
-                                  label: "Razón:",
-                                  left: 5,
-                                  top: 5,
-                                ),
-                                TextFormFieldCustom001(
-                                  icon: Icon(Icons.question_mark),
-                                  hintText: "Ingrese una razón",
-                                  onChanged: _.setRazon,
-                                  validators: _.razonValidators,
-                                  keyboardType: TextInputType.text,
-                                  textInputAction: TextInputAction.next,
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: CustomButtonSubmit(
-                              text: "Cancelar",
-                              color: SlgColors.greyWhite,
-                              paggingInsetsButtonValue: 5,
-                              onTap: _.gotoBackCancel,
-                            ),
+                        Expanded(
+                          child: CustomButtonSubmit(
+                            text: "Agregar",
+                            paggingInsetsButtonValue: 5,
+                            onTap: () {
+                              _.submit(formKey);
+                            },
                           ),
-                          Expanded(
-                            child: CustomButtonSubmit(
-                              text: "Agregar",
-                              paggingInsetsButtonValue: 5,
-                              onTap: () {
-                                _.submit(formKey);
-                              },
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

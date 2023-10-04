@@ -19,7 +19,7 @@ class CustomCardCitaOcupado extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtognaticaColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -51,7 +51,7 @@ class CustomCardCitaOcupado extends StatelessWidget {
                         Text(
                           "Ocupado",
                           style: TextStyle(
-                              color: SlgColors.rojo,
+                              color: OrtognaticaColors.rojo,
                               fontWeight: FontWeight.bold),
                         ),
                         Row(
@@ -78,7 +78,7 @@ class CustomCardCitaOcupado extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                             fontSize: 12,
-                                            color: SlgColors.rojoLight),
+                                            color: OrtognaticaColors.rojoLight),
                                       ),
                                     ),
                                   ],
@@ -105,7 +105,7 @@ class CustomCardCitaOcupado extends StatelessWidget {
                         onDeleteCitaOcupada(itemHoraModel);
                       },
                       iconSize: 25,
-                      color: SlgColors.greyWhite,
+                      color: OrtognaticaColors.greyWhite,
                     ),
                   ),
                   SizedBox(

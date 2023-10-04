@@ -14,7 +14,7 @@ class CitaRapidaListPage extends GetWidget<CitaRapidaListController> {
     return GetBuilder<CitaRapidaListController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtognaticaColors.OrtogColor,
           centerTitle: true,
           title: Text(
             "PACIENTES PARA ACTUALIZAR",
@@ -71,14 +71,14 @@ class CitaRapidaListPage extends GetWidget<CitaRapidaListController> {
                         Container(
                           margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                           decoration: BoxDecoration(
-                            color: SlgColors.azul_principal,
+                            color: OrtognaticaColors.OrtogColor,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: IconButton(
                             onPressed: _.getCitasFilteredModel,
                             icon: Icon(Icons.person_search_sharp),
                             padding: EdgeInsets.zero,
-                            color: SlgColors.white,
+                            color: OrtognaticaColors.white,
                           ),
                         ),
                       ],

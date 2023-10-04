@@ -147,7 +147,7 @@ class CitaCreateController extends GetxController {
       snackbar.showSnackBar(
         title: "DNI",
         message: "Ingrese un DNI válido",
-        color: SlgColors.amarillo,
+        color: OrtognaticaColors.amarillo,
       );
       return;
     }
@@ -165,9 +165,10 @@ class CitaCreateController extends GetxController {
       right: (response) {
         if (response != null) {
           snackbar.showSnackBar(
-            title: "Paciente",
-            message: response.nombres,
-            color: SlgColors.greenDark,
+            title: "Paciente encontrado",
+            message:
+                "${response.nombres} ${response.apPaterno} ${response.apMaterno}",
+            color: OrtognaticaColors.SLGcolor,
           );
           isVerificado = true;
           setidPaciente(response.id,
@@ -175,11 +176,12 @@ class CitaCreateController extends GetxController {
           pacienteCtrl.text =
               "${response.nombres} ${response.apPaterno} ${response.apMaterno}";
           setCitaRapidaCelular(response.celular ?? "");
+          update();
         } else {
           snackbar.showSnackBar(
             title: "DNI",
             message: "No está registrado",
-            color: SlgColors.amarillo,
+            color: OrtognaticaColors.amarillo,
           );
           pacienteCtrl.text = "";
         }
@@ -252,7 +254,7 @@ class CitaCreateController extends GetxController {
         snackbar.showSnackBar(
             title: "Paciente",
             message: "No ha seleccionado un Paciente",
-            color: SlgColors.amarillo);
+            color: OrtognaticaColors.amarillo);
         return;
       }
       late CitaCreateModel citaCreateModel;
@@ -284,8 +286,8 @@ class CitaCreateController extends GetxController {
   //update
   int idPaciente = 0;
   int? idSede = 0;
-  RxBool isCita = true.obs;
-  RxBool isCitaRapida = false.obs;
+  RxBool isCita = false.obs;
+  RxBool isCitaRapida = true.obs;
   int idDoctor = 0;
   String fechaCita = "";
   String razon = "";
@@ -361,10 +363,10 @@ class CitaCreateController extends GetxController {
   }
 
   void setRazon(String raz) {
+    this.razon = raz;
     createFormModel.update((val) {
       val?.razon = razon;
     });
-    this.razon = raz;
   }
 
   //------------------------------------------------------------------------------------------

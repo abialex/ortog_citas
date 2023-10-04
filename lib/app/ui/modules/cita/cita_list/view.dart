@@ -23,7 +23,7 @@ class Cita extends GetWidget<CitaListController> {
     return GetBuilder<CitaListController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtognaticaColors.OrtogColor,
           centerTitle: true,
           title: Text(
             "Citas",
@@ -50,13 +50,13 @@ class Cita extends GetWidget<CitaListController> {
                               _.startGetCitas(
                                   DateTime.parse(date.value.toString()));
                             },
-                            selectionColor: SlgColors.SLGcolor,
-                            todayHighlightColor: SlgColors.SLGcolor,
+                            selectionColor: OrtognaticaColors.OrtogColor,
+                            todayHighlightColor: OrtognaticaColors.OrtogColor,
                             showTodayButton: true,
                             headerStyle: DateRangePickerHeaderStyle(
                               textAlign: TextAlign.left,
                               textStyle: TextStyle(
-                                color: SlgColors.SLGcolor,
+                                color: OrtognaticaColors.OrtogColor,
                                 fontSize: 30,
                               ),
                             ),
@@ -67,7 +67,7 @@ class Cita extends GetWidget<CitaListController> {
                             margin: EdgeInsets.only(bottom: 15),
                             child: LinearProgressIndicator(
                               backgroundColor: Colors.transparent,
-                              color: SlgColors.SLGcolor,
+                              color: OrtognaticaColors.OrtogColor,
                               value: _.progresIndicator.value,
                             ),
                           ),
@@ -201,7 +201,7 @@ class Cita extends GetWidget<CitaListController> {
                         //               Container(
                         //                 margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                         //                 decoration: BoxDecoration(
-                        //                   color: SlgColors.azul_principal,
+                        //                   color: SlgColors.OrtogColor,
                         //                   borderRadius: BorderRadius.circular(10),
                         //                 ),
                         //                 child: IconButton(
@@ -223,7 +223,7 @@ class Cita extends GetWidget<CitaListController> {
                         //           Container(
                         //             margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                         //             decoration: BoxDecoration(
-                        //               color: SlgColors.azul_principal,
+                        //               color: SlgColors.OrtogColor,
                         //               borderRadius: BorderRadius.circular(10),
                         //             ),
                         //             child: IconButton(
@@ -242,16 +242,16 @@ class Cita extends GetWidget<CitaListController> {
                         //   ],
                         // ),
 
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: CustomToggleList(
-                            top: 5,
-                            heightBox: 25,
-                            isMultiSelect: true,
-                            listBool: _.listbool,
-                            listWords: _.listTime,
-                          ),
-                        ),
+                        // SingleChildScrollView(
+                        //   scrollDirection: Axis.horizontal,
+                        //   child: CustomToggleList(
+                        //     top: 5,
+                        //     heightBox: 25,
+                        //     isMultiSelect: true,
+                        //     listBool: _.listbool,
+                        //     listWords: _.listTime,
+                        //   ),
+                        // ),
                         Expanded(
                           child: Obx(() {
                             if (controller.citasIconStateProgress.value ==
@@ -324,12 +324,12 @@ class Cita extends GetWidget<CitaListController> {
                             Divider(
                               thickness: 0.5,
                               height: 1,
-                              color: SlgColors.dark,
+                              color: OrtognaticaColors.dark,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Expanded(flex: 3, child: Text("Clínica SLG")),
+                                Expanded(flex: 3, child: Text("Ortognática")),
                                 Expanded(
                                   flex: 8,
                                   child: Text(_.user.value.persona ?? "NN",
@@ -479,7 +479,7 @@ class Cita extends GetWidget<CitaListController> {
                         },
                         text: "CANCELAR",
                         paggingInsetsVerticalTextValue: 15,
-                        color: SlgColors.greyWhite,
+                        color: OrtognaticaColors.greyWhite,
                       )),
                       Expanded(
                           child: CustomButtonSubmit(

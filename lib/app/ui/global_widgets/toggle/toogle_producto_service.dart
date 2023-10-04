@@ -61,12 +61,12 @@ class CustomToggleList extends StatelessWidget {
               oldIndex = index;
             }
           },
-          selectedColor: SlgColors.white, //color del texto seleccionado
+          selectedColor: OrtognaticaColors.white, //color del texto seleccionado
           fillColor:
-              SlgColors.azul_principal, //color background del seleccionado
+              OrtognaticaColors.OrtogColor, //color background del seleccionado
           textStyle: const TextStyle(fontSize: StyleUtils.P0_15),
-          selectedBorderColor: SlgColors.azul_principal,
-          borderColor: SlgColors.azul_principal,
+          selectedBorderColor: OrtognaticaColors.OrtogColor,
+          borderColor: OrtognaticaColors.OrtogColor,
           children: List.generate(
             listWords.length,
             (index) => Padding(

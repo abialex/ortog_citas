@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ortog_citas/app/ui/theme/app_colors.dart';
 import '../../../core/middleware/push_notification_service.dart';
 import '../../../core/utils/snackbar.dart';
 import '../../../data/models/container/rol_model.dart';
@@ -75,10 +76,11 @@ class LoginController extends GetxController {
           CustomSnackbar(
             icon: Icon(
               Icons.check,
-              color: Colors.greenAccent,
+              color: OrtognaticaColors.white,
             ),
             title: "Bienvenido",
             message: "${user.persona ?? "NN"}",
+            backgroundColor: OrtognaticaColors.SLGcolor,
           ).showSnacbar();
         } else {
           CustomSnackbar customSnackbar = CustomSnackbar(

@@ -14,7 +14,7 @@ class LoginPage extends GetWidget<LoginController> {
   Widget build(BuildContext context) {
     return GetBuilder<LoginController>(builder: (_) {
       return Scaffold(
-        backgroundColor: SlgColors.lightGrey,
+        backgroundColor: OrtognaticaColors.white,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -35,8 +35,7 @@ class LoginPage extends GetWidget<LoginController> {
                             constraints: BoxConstraints.expand(
                                 width: StyleUtils.MAX_WIDTH_IMAG_400,
                                 height: StyleUtils.MAX_HEIGHT_IMAG_150),
-                            child:
-                                Image.asset("assets/slg/slg_logo_login.png")),
+                            child: Image.asset("assets/logo.png")),
                         SizedBox(
                           height: 50,
                         ),

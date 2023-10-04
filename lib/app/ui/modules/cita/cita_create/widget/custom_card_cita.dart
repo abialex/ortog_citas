@@ -15,7 +15,7 @@ class CustomCardCita extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtognaticaColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -41,7 +41,7 @@ class CustomCardCita extends StatelessWidget {
                           Text(
                             "Libre",
                             style: TextStyle(
-                                color: SlgColors.azul_principal,
+                                color: OrtognaticaColors.OrtogColor,
                                 fontWeight: FontWeight.bold),
                           ),
                           Row(
@@ -54,7 +54,7 @@ class CustomCardCita extends StatelessWidget {
                                   constraints: BoxConstraints(),
                                   onPressed: () {},
                                   icon: Icon(Icons.lock_outline),
-                                  color: SlgColors.rojoLight,
+                                  color: OrtognaticaColors.rojoLight,
                                   iconSize: 20,
                                 ),
                               ),
@@ -68,7 +68,7 @@ class CustomCardCita extends StatelessWidget {
                               Text(
                                 "Ocupado",
                                 style: TextStyle(
-                                    color: SlgColors.rojo,
+                                    color: OrtognaticaColors.rojo,
                                     fontWeight: FontWeight.bold),
                               ),
                               Row(
@@ -96,7 +96,8 @@ class CustomCardCita extends StatelessWidget {
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontSize: 12,
-                                                  color: SlgColors.rojoLight),
+                                                  color: OrtognaticaColors
+                                                      .rojoLight),
                                             ),
                                           ),
                                         ],
@@ -120,7 +121,7 @@ class CustomCardCita extends StatelessWidget {
                               Text(
                                 itemHoraModel.sede,
                                 style: TextStyle(
-                                    color: SlgColors.azulDark,
+                                    color: OrtognaticaColors.azulDark,
                                     fontWeight: FontWeight.bold),
                               ),
                               Column(
@@ -237,7 +238,7 @@ class CustomCardCita extends StatelessWidget {
                                         child: IconButton(
                                           iconSize: 20,
                                           onPressed: () {},
-                                          color: SlgColors.rojoLight,
+                                          color: OrtognaticaColors.rojoLight,
                                           icon: Icon(Icons.delete),
                                         ),
                                       ),

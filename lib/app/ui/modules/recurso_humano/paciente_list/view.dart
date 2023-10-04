@@ -20,7 +20,7 @@ class PacienteListPage extends GetWidget<PacienteListController> {
     return GetBuilder<PacienteListController>(builder: (_) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtognaticaColors.OrtogColor,
           centerTitle: true,
           title: Text(
             "LISTA DE PACIENTES",
@@ -31,7 +31,7 @@ class PacienteListPage extends GetWidget<PacienteListController> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: SlgColors.azul_principal,
+          backgroundColor: OrtognaticaColors.OrtogColor,
           tooltip: "agregar paciente",
           onPressed: () {},
           child: IconButton(
@@ -39,7 +39,7 @@ class PacienteListPage extends GetWidget<PacienteListController> {
             icon: Icon(Icons.add),
             padding: EdgeInsets.zero,
             onPressed: _.gotoPacienteCreate,
-            color: SlgColors.white,
+            color: OrtognaticaColors.white,
             iconSize: 35,
           ),
         ),
@@ -87,14 +87,14 @@ class PacienteListPage extends GetWidget<PacienteListController> {
                           ),
                           Container(
                             decoration: BoxDecoration(
-                              color: SlgColors.azul_principal,
+                              color: OrtognaticaColors.OrtogColor,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: IconButton(
                               constraints: BoxConstraints(),
                               onPressed: _.consultarPaciente,
                               icon: Icon(Icons.search),
-                              color: SlgColors.white,
+                              color: OrtognaticaColors.white,
                             ),
                           ),
                         ],

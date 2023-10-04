@@ -24,7 +24,7 @@ class InicioAdministradorPage extends GetWidget<InicioAdministradorController> {
         appBar: AppBar(
             centerTitle: true,
             title: Text(PageEnum.inicio.nombre),
-            backgroundColor: SlgColors.azul_principal),
+            backgroundColor: OrtognaticaColors.OrtogColor),
         drawer: MenuPrincipal(),
         body: SingleChildScrollView(
           child: Container(

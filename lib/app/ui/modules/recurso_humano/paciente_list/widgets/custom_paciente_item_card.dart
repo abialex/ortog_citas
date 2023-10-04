@@ -25,7 +25,7 @@ class CustomCardPersonaItemWidget extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtognaticaColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -105,8 +105,8 @@ class CustomCardPersonaItemWidget extends StatelessWidget {
                             Text(pacienteItem.is_activeText,
                                 style: TextStyle(
                                     color: pacienteItem.is_active
-                                        ? SlgColors.green
-                                        : SlgColors.rojo,
+                                        ? OrtognaticaColors.azul
+                                        : OrtognaticaColors.rojo,
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -182,7 +182,7 @@ class CustomCardPersonaItemWidget extends StatelessWidget {
           ],
         ),
         isDismissible: true,
-        backgroundColor: SlgColors.blanco_principal,
+        backgroundColor: OrtognaticaColors.blanco_principal,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
         ));

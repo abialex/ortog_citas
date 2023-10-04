@@ -5,7 +5,8 @@ import '../../theme/app_colors.dart';
 
 class CustomProgressIndicator extends StatelessWidget {
   final Color color;
-  const CustomProgressIndicator({super.key, this.color = SlgColors.SLGcolor});
+  const CustomProgressIndicator(
+      {super.key, this.color = OrtognaticaColors.OrtogColor});
   @override
   Widget build(BuildContext context) {
     return CircularProgressIndicator(

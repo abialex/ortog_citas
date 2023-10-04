@@ -38,7 +38,7 @@ class CustomTimePicker001 extends StatelessWidget {
     return Container(
       height: height,
       decoration: BoxDecoration(
-          border: Border.all(color: SlgColors.lightGrey),
+          border: Border.all(color: OrtognaticaColors.lightGrey),
           borderRadius: BorderRadius.circular(10)),
       margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
       padding: const EdgeInsets.all(0),
@@ -55,7 +55,7 @@ class CustomTimePicker001 extends StatelessWidget {
               suffixIcon: Icon(
                 Icons.watch_later_outlined,
                 size: iconSize,
-                color: SlgColors.dark,
+                color: OrtognaticaColors.dark,
               ),
               isCollapsed: true,
               isDense: true,
@@ -63,7 +63,7 @@ class CustomTimePicker001 extends StatelessWidget {
               // labelText: labelText,
               hintText: hintText,
               hintStyle: const TextStyle(
-                color: SlgColors.dark,
+                color: OrtognaticaColors.dark,
                 fontSize: StyleUtils.P0_15,
               ),
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -98,7 +98,7 @@ class CustomTimePicker001 extends StatelessWidget {
             },
             validator: validator,
             style: const TextStyle(
-              color: SlgColors.dark,
+              color: OrtognaticaColors.dark,
               fontSize: StyleUtils.P0_15,
             ),
             //onChanged: onChanged,

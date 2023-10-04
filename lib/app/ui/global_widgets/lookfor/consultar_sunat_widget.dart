@@ -34,6 +34,7 @@ class ConsultaSunatPage extends GetView<ConsultaSunatController> {
                     top: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT,
                   ),
                   TextFormFieldCustom001(
+                    saveds: (p0) {},
                     icon: Icon(
                       Icons.safety_check,
                       color: Colors.transparent,
@@ -70,12 +71,12 @@ class ConsultaSunatPage extends GetView<ConsultaSunatController> {
                       margin: const EdgeInsets.only(left: 5, top: 5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: SlgColors.azul_principal,
+                        color: OrtognaticaColors.OrtogColor,
                       ),
-                      //color: OdebinColors.azul_principal,
+                      //color: OdebinColors.OrtogColor,
                       child: IconButton(
                           alignment: Alignment.center,
-                          color: SlgColors.white,
+                          color: OrtognaticaColors.white,
                           onPressed: () async {
                             onPressed(await _.consultarNumeroDocumento());
                           },

@@ -24,7 +24,7 @@ class CustomCardCita extends StatelessWidget {
       shadowColor: Colors.grey,
       elevation: 2,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: SlgColors.grey, width: 0.4),
+        side: BorderSide(color: OrtognaticaColors.grey, width: 0.4),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
@@ -105,7 +105,7 @@ class CustomCardCita extends StatelessWidget {
                         openBottomSheetCitaFiltered(itemCitaFiltered);
                       },
                       icon: Icon(Icons.more_vert),
-                      color: SlgColors.greyWhite,
+                      color: OrtognaticaColors.greyWhite,
                       iconSize: 25,
                     ),
                   ),
@@ -145,7 +145,7 @@ class CustomCardCita extends StatelessWidget {
                     itemObject: citaItemFiltered,
                   )
                 : CustomBottomSheetItem(
-                    color: SlgColors.rojoLight,
+                    color: OrtognaticaColors.rojoLight,
                     title: "Sin Celular",
                     icon: const Icon(Icons.phonelink_erase_outlined),
                     onPressedDynamic: (s) {},
