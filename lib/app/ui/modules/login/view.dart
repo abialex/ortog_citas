@@ -46,7 +46,7 @@ class LoginPage extends GetWidget<LoginController> {
                       SizedBox(
                         height: 70,
                       ),
-                      Image.asset("assets/slg/slg_logo_login.png"),
+                      Image.asset("assets/logo.png", height: 100),
                       SizedBox(
                         height: 50,
                       ),

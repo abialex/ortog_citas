@@ -40,148 +40,149 @@ class InicioAsistentaPage extends GetWidget<InicioAsistentaController> {
                   fontsize: 20,
                   fontWeight: FontWeight.bold,
                 ),
-                TextBubble(
-                  text: "Instrucciones para Asistentas",
-                  fontsize: 16,
-                ),
                 SizedBox(height: 16),
                 TextBubble(
-                  text: "1. Agrega una cita",
-                  fontsize: 15,
-                  alignment: TextAlign.left,
+                  text: "Ortognática",
+                  fontsize: 16,
                 ),
-                ImageBubble(
-                  image: Image.asset(
-                    'assets/slg/instrucciones/agregar_cita.png',
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    height: 100,
-                  ),
-                ),
-                SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
-                TextBubble(
-                  text: "2. Describe el motivo por el cual está ocupado",
-                  fontsize: 15,
-                  alignment: TextAlign.left,
-                ),
-                ImageCarousel(
-                  seconds: 2,
-                  height: 70,
-                  imageUrls: [
-                    'assets/slg/instrucciones/agregar_cita_ocupada.png',
-                    'assets/slg/instrucciones/cita_ocupado_perzonalizado.png'
+                // SizedBox(height: 16),
+                // TextBubble(
+                //   text: "1. Agrega una cita",
+                //   fontsize: 15,
+                //   alignment: TextAlign.left,
+                // ),
+                // ImageBubble(
+                //   image: Image.asset(
+                //     'assets/slg/instrucciones/agregar_cita.png',
+                //     alignment: Alignment.center,
+                //     width: double.infinity,
+                //     height: 100,
+                //   ),
+                // ),
+                // SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
+                // TextBubble(
+                //   text: "2. Describe el motivo por el cual está ocupado",
+                //   fontsize: 15,
+                //   alignment: TextAlign.left,
+                // ),
+                // ImageCarousel(
+                //   seconds: 2,
+                //   height: 70,
+                //   imageUrls: [
+                //     'assets/slg/instrucciones/agregar_cita_ocupada.png',
+                //     'assets/slg/instrucciones/cita_ocupado_perzonalizado.png'
 
-                    // Agrega aquí más URL de imágenes
-                  ],
-                ),
-                SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
-                TextBubble(
-                  text: "3. Tipos de cita",
-                  fontsize: 15,
-                  alignment: TextAlign.left,
-                ),
-                ImageCarousel(
-                  height: 260,
-                  seconds: 5,
-                  imageUrls: [
-                    'assets/slg/instrucciones/cita_normal_add.png',
-                    'assets/slg/instrucciones/cita_rapida_add.png',
-                    'assets/slg/instrucciones/cita_ocupada_add.png',
+                //     // Agrega aquí más URL de imágenes
+                //   ],
+                // ),
+                // SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
+                // TextBubble(
+                //   text: "3. Tipos de cita",
+                //   fontsize: 15,
+                //   alignment: TextAlign.left,
+                // ),
+                // ImageCarousel(
+                //   height: 260,
+                //   seconds: 5,
+                //   imageUrls: [
+                //     'assets/slg/instrucciones/cita_normal_add.png',
+                //     'assets/slg/instrucciones/cita_rapida_add.png',
+                //     'assets/slg/instrucciones/cita_ocupada_add.png',
 
-                    // Agrega aquí más URL de imágenes
-                  ],
-                ),
-                TextBubble(
-                  text:
-                      "CITA OCUPADA: Puedes describir el motivo por el cual está Ocupado. ",
-                  fontsize: 12,
-                  alignment: TextAlign.left,
-                ),
-                TextBubble(
-                  text:
-                      "Cita NORMAL: El paciente debe estar registrado en el sistema para ser buscado por su DNI.",
-                  fontsize: 12,
-                  alignment: TextAlign.left,
-                ),
-                TextBubble(
-                  text:
-                      "Cita RÁPIDA: Solo es necesario los nombres y el motivo.",
-                  fontsize: 12,
-                  alignment: TextAlign.left,
-                ),
-                SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
-                TextBubble(
-                  text: "4. LLamadas",
-                  fontsize: 15,
-                  alignment: TextAlign.left,
-                ),
-                TextBubble(
-                  text:
-                      "Puedes llamar al paciente siempre y encuando hayas registrado su celular",
-                  fontsize: 12,
-                  alignment: TextAlign.left,
-                ),
-                ImageCarousel(
-                  height: 120,
-                  seconds: 2,
-                  imageUrls: [
-                    'assets/slg/instrucciones/llamada_off.png',
-                    'assets/slg/instrucciones/llamada_on.png',
-                    // Agrega aquí más URL de imágenes
-                  ],
-                ),
-                SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
-                TextBubble(
-                  text: "5. Buscador de DNI",
-                  fontsize: 15,
-                  alignment: TextAlign.left,
-                ),
-                TextBubble(
-                  text: "Busca los datos de una persona por su DNI",
-                  fontsize: 12,
-                  alignment: TextAlign.left,
-                ),
-                ImageCarousel(
-                  height: 400,
-                  seconds: 0,
-                  miliseconds: 400,
-                  imageUrls: [
-                    'assets/slg/novedades/buscador_1.png',
-                    'assets/slg/novedades/buscador_2.png',
-                    'assets/slg/novedades/buscador_3.png',
-                    'assets/slg/novedades/buscador_4.png',
-                    'assets/slg/novedades/buscador_5.png',
-                    'assets/slg/novedades/buscador_6.png',
-                    'assets/slg/novedades/buscador_7.png',
-                    'assets/slg/novedades/buscador_8.png',
-                    'assets/slg/novedades/buscador_9_result.png',
-                    'assets/slg/novedades/buscador_9_result.png',
-                    'assets/slg/novedades/buscador_9_result.png',
-                    'assets/slg/novedades/buscador_9_result.png',
+                //     // Agrega aquí más URL de imágenes
+                //   ],
+                // ),
+                // TextBubble(
+                //   text:
+                //       "CITA OCUPADA: Puedes describir el motivo por el cual está Ocupado. ",
+                //   fontsize: 12,
+                //   alignment: TextAlign.left,
+                // ),
+                // TextBubble(
+                //   text:
+                //       "Cita NORMAL: El paciente debe estar registrado en el sistema para ser buscado por su DNI.",
+                //   fontsize: 12,
+                //   alignment: TextAlign.left,
+                // ),
+                // TextBubble(
+                //   text:
+                //       "Cita RÁPIDA: Solo es necesario los nombres y el motivo.",
+                //   fontsize: 12,
+                //   alignment: TextAlign.left,
+                // ),
+                // SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
+                // TextBubble(
+                //   text: "4. LLamadas",
+                //   fontsize: 15,
+                //   alignment: TextAlign.left,
+                // ),
+                // TextBubble(
+                //   text:
+                //       "Puedes llamar al paciente siempre y encuando hayas registrado su celular",
+                //   fontsize: 12,
+                //   alignment: TextAlign.left,
+                // ),
+                // ImageCarousel(
+                //   height: 120,
+                //   seconds: 2,
+                //   imageUrls: [
+                //     'assets/slg/instrucciones/llamada_off.png',
+                //     'assets/slg/instrucciones/llamada_on.png',
+                //     // Agrega aquí más URL de imágenes
+                //   ],
+                // ),
+                // SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
+                // TextBubble(
+                //   text: "5. Buscador de DNI",
+                //   fontsize: 15,
+                //   alignment: TextAlign.left,
+                // ),
+                // TextBubble(
+                //   text: "Busca los datos de una persona por su DNI",
+                //   fontsize: 12,
+                //   alignment: TextAlign.left,
+                // ),
+                // ImageCarousel(
+                //   height: 400,
+                //   seconds: 0,
+                //   miliseconds: 400,
+                //   imageUrls: [
+                //     'assets/slg/novedades/buscador_1.png',
+                //     'assets/slg/novedades/buscador_2.png',
+                //     'assets/slg/novedades/buscador_3.png',
+                //     'assets/slg/novedades/buscador_4.png',
+                //     'assets/slg/novedades/buscador_5.png',
+                //     'assets/slg/novedades/buscador_6.png',
+                //     'assets/slg/novedades/buscador_7.png',
+                //     'assets/slg/novedades/buscador_8.png',
+                //     'assets/slg/novedades/buscador_9_result.png',
+                //     'assets/slg/novedades/buscador_9_result.png',
+                //     'assets/slg/novedades/buscador_9_result.png',
+                //     'assets/slg/novedades/buscador_9_result.png',
 
-                    // Agrega aquí más URL de imágenes
-                  ],
-                ),
-                SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
-                TextBubble(
-                  text: "6. Actualiza las citas rápidas",
-                  fontsize: 15,
-                  alignment: TextAlign.left,
-                ),
-                TextBubble(
-                  text:
-                      "Puedes crear un paciente desde la cita rápida que registraste",
-                  fontsize: 12,
-                  alignment: TextAlign.left,
-                ),
-                ImageBubble(
-                  image: Image.asset(
-                    'assets/slg/instrucciones/actualizar_paciente_desde_cita.png',
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    height: 400,
-                  ),
-                ),
+                //     // Agrega aquí más URL de imágenes
+                //   ],
+                // ),
+                // SizedBox(height: StyleUtils.CUSTOM_PADDING_FORM_10_DEFAULT),
+                // TextBubble(
+                //   text: "6. Actualiza las citas rápidas",
+                //   fontsize: 15,
+                //   alignment: TextAlign.left,
+                // ),
+                // TextBubble(
+                //   text:
+                //       "Puedes crear un paciente desde la cita rápida que registraste",
+                //   fontsize: 12,
+                //   alignment: TextAlign.left,
+                // ),
+                // ImageBubble(
+                //   image: Image.asset(
+                //     'assets/slg/instrucciones/actualizar_paciente_desde_cita.png',
+                //     alignment: Alignment.center,
+                //     width: double.infinity,
+                //     height: 400,
+                //   ),
+                // ),
               ],
             ),
           ),
