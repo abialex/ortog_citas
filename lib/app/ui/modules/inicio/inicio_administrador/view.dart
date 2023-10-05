@@ -46,7 +46,7 @@ class InicioAdministradorPage extends GetWidget<InicioAdministradorController> {
                   SizedBox(height: 24),
                   ImageBubble(
                     image: Image.asset(
-                      'assets/slg/slg_logo_login.png',
+                      'assets/logo.png',
                       alignment: Alignment.center,
                       width: double.infinity,
                       height: 100,

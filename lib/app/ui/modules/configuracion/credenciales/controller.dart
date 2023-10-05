@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:ortog_citas/app/core/middleware/push_notification_service.dart';
+import 'package:ortog_citas/app/data/models/cloud/cloud_message_model.dart';
 import 'package:ortog_citas/app/data/models/usuario/message_real_time_model.dart';
 import 'package:ortog_citas/app/ui/global_controllers/snackbar_controller.dart';
 import 'package:ortog_citas/app/ui/routes/app_routes.dart';
@@ -20,11 +21,11 @@ class CredencialesController extends GetxController {
   final FirebaseAuth? _auth = Platform.isAndroid ? FirebaseAuth.instance : null;
   StreamSubscription<DatabaseEvent>? listenRealTime;
 
-  StreamSubscription<String>? notificaciones = Platform.isAndroid
+  StreamSubscription<CloudMessageModel>? notificaciones = Platform.isAndroid
       ? PushNotificationService.messagesStream.listen((event) {
           Get.offNamed(AppRoutes.CITA);
           SnackBarController().showSnackBar(
-              title: "Notificacion", message: event, color: Colors.red);
+              title: event.body, message: event.title, color: Colors.red);
         })
       : null;
 

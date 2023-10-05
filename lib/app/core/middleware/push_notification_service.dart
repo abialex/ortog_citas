@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ortog_citas/app/data/models/cloud/cloud_message_model.dart';
 import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -8,9 +9,9 @@ import 'package:flutter/material.dart';
 class PushNotificationService {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
   static String? token;
-  static StreamController<String> _messageStream =
+  static StreamController<CloudMessageModel> _messageStream =
       new StreamController.broadcast();
-  static Stream<String> get messagesStream => _messageStream.stream;
+  static Stream<CloudMessageModel> get messagesStream => _messageStream.stream;
 
   static Future<void> initializeApp() async {
     //push
@@ -32,22 +33,36 @@ class PushNotificationService {
   }
 
   static Future<void> _backgroundHandler(RemoteMessage message) async {
-    _messageStream.add(message.notification?.body ?? "No title");
+    print(message.data);
+    _messageStream.add(
+      CloudMessageModel(
+        title: message.notification?.title ?? "--",
+        body: message.notification?.body ?? "Sin mensaje",
+        data: message.data,
+      ),
+    );
   }
 
   static Future<void> _onMessageHandler(RemoteMessage message) async {
-    DialogController().showDialog001(
-      icon: Icons.info,
-      title: message.notification?.title ?? "Sin título",
-      mensaje: message.notification?.body ?? "Sin mensaje",
-      twoOptions: false,
+    _messageStream.add(
+      CloudMessageModel(
+        title: message.notification?.title ?? "--",
+        body: message.notification?.body ?? "Sin mensaje",
+        data: message.data,
+      ),
     );
-    //_messageStream.add(message.notification?.body ?? "No title");
   }
 
   static Future<void> _onOpenMessageOpenApp(RemoteMessage message) async {
     //cuando se convierte de click notification al abrir el app
-    _messageStream.add(message.notification?.body ?? "No title");
+    print(message.data);
+    _messageStream.add(
+      CloudMessageModel(
+        title: message.notification?.title ?? "--",
+        body: message.notification?.body ?? "Sin mensaje",
+        data: message.data,
+      ),
+    );
   }
 
   static closeStrams() {

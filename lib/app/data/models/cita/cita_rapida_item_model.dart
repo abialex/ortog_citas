@@ -36,9 +36,10 @@ class CitaRapidaItemModel {
       this.citaRapidaCelular});
 
   //fromJson
+
   factory CitaRapidaItemModel.fromJson(Map<String, dynamic> map) =>
-      _$CitaItemFilteredModelFromJson(map);
+      _$CitaRapidaItemModelFromJson(map);
 
   //ToJson
-  Map<String, dynamic> toJson() => _$CitaItemFilteredModelToJson(this);
+  Map<String, dynamic> toJson() => _$CitaRapidaItemModelToJson(this);
 }

@@ -6,7 +6,11 @@ import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
+import '../../../../core/middleware/push_notification_service.dart';
+import '../../../../data/models/cloud/cloud_message_model.dart';
 import '../../../../data/models/usuario/message_real_time_model.dart';
 import '../../../../data/models/usuario/usuario_responsive.dart';
 import '../../../../data/repository_imp/local/local_auth_repository.dart';
@@ -26,9 +30,17 @@ class InicioAdministradorController extends GetxController {
     persona: "",
   ).obs;
 
+  StreamSubscription<CloudMessageModel>? notificaciones = Platform.isAndroid
+      ? PushNotificationService.messagesStream.listen((event) {
+          //print(event.data);
+          //Get.toNamed(AppRoutes.CITA);
+          DialogController().showDialog002(
+              icon: Icons.message, title: event.title, mensaje: event.body);
+        })
+      : null;
+
   Rx<String> titulo = "!Bienvenido a la App de Citas Dentales!".obs;
-  Rx<String> mensaje =
-      "- Visualiza las citas de tus pacientes de manera fácil y rápida".obs;
+  Rx<String> mensaje = "Ortognática".obs;
   Rx<String> boyd = "".obs;
 
   @override
@@ -75,6 +87,7 @@ class InicioAdministradorController extends GetxController {
   void onClose() async {
     super.onClose();
     listenRealTime?.cancel();
+    notificaciones?.cancel();
   }
 
   StreamSubscription<DatabaseEvent> listenToDatabaseChanges() {

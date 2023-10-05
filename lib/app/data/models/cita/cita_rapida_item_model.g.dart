@@ -6,8 +6,7 @@ part of 'cita_rapida_item_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CitaRapidaItemModel _$CitaItemFilteredModelFromJson(
-        Map<String, dynamic> json) =>
+CitaRapidaItemModel _$CitaRapidaItemModelFromJson(Map<String, dynamic> json) =>
     CitaRapidaItemModel(
       id: json['id'] as int,
       fechaCita: json['fechaCita'] as String,
@@ -24,7 +23,7 @@ CitaRapidaItemModel _$CitaItemFilteredModelFromJson(
       citaRapidaCelular: json['citaRapidaCelular'] as String?,
     );
 
-Map<String, dynamic> _$CitaItemFilteredModelToJson(
+Map<String, dynamic> _$CitaRapidaItemModelToJson(
         CitaRapidaItemModel instance) =>
     <String, dynamic>{
       'id': instance.id,

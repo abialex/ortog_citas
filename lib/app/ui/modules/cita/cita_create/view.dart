@@ -45,7 +45,7 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                 children: [
                   CustomDivider(
                     paddindTop: 15,
-                    title: 'Horario, doctor y sede',
+                    title: 'Horario y doctor',
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,20 +55,18 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             CustomLabelForm001(
+                              fontWeight: FontWeight.bold,
                               label: "Fecha de la cita:",
                               left: 5,
                               top: 16,
                             ),
-                            TextFormFieldCustom001(
-                              controller: _.fechaCitaCtrl,
-                              isEnabled: false,
-                              textAlign: TextAlign.center,
-                              icon: Icon(Icons.calendar_month),
-                              hintText: "",
-                              onChanged: (p0) {},
-                              validators: (p0) {},
-                              keyboardType: TextInputType.none,
-                            )
+                            Center(
+                              child: CustomLabelForm001(
+                                label: _.fechaCitaCtrl.text,
+                                left: 5,
+                                top: 15,
+                              ),
+                            ),
                           ],
                         ),
                       )
@@ -82,54 +80,55 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             CustomLabelForm001(
+                              fontWeight: FontWeight.bold,
                               label: "Doctor:",
                               left: 5,
                               top: 5,
                             ),
-                            TextFormFieldCustom001(
-                              textAlign: TextAlign.center,
-                              controller: _.doctorCtrl,
-                              isEnabled: false,
-                              icon: Icon(Icons.person_outline_sharp),
-                              hintText: "",
-                              onChanged: (p0) {},
-                              validators: (p0) {},
-                              keyboardType: null,
-                            )
+                            Center(
+                              child: CustomLabelForm001(
+                                label: _.doctorCtrl.text,
+                                left: 5,
+                                top: 15,
+                              ),
+                            ),
                           ],
                         ),
                       )
                     ],
                   ),
-                  Obx(
-                    () => Visibility(
-                      visible: _.isCita.value || _.isCitaRapida.value,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                CustomLabelForm001(
-                                  label: "Sede:",
-                                  left: 5,
-                                  top: 5,
-                                ),
-                                CustomDropdownButtonFormField<SedeModel>(
-                                  value: _.sedeModelInit?.value,
-                                  items: _.sedeList,
-                                  hintText: "selecciona una Sede",
-                                  onChanged: _.setSede,
-                                  validators: _.sedeValidators,
-                                  height: 25,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                  // Obx(
+                  //   () => Visibility(
+                  //     visible: _.isCita.value || _.isCitaRapida.value,
+                  //     child: Row(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Expanded(
+                  //           child: Column(
+                  //             crossAxisAlignment: CrossAxisAlignment.stretch,
+                  //             children: [
+                  //               CustomLabelForm001(
+                  //                 label: "Sede:",
+                  //                 left: 5,
+                  //                 top: 5,
+                  //               ),
+                  //               CustomDropdownButtonFormField<SedeModel>(
+                  //                 value: _.sedeModelInit?.value,
+                  //                 items: _.sedeList,
+                  //                 hintText: "selecciona una Sede",
+                  //                 onChanged: _.setSede,
+                  //                 validators: _.sedeValidators,
+                  //                 height: 25,
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,13 +195,17 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                             listBool: _.isLibre
                                 ? [
                                     false.obs,
-                                    _.isCita,
                                     _.isCitaRapida,
+                                    _.isCita,
                                   ]
-                                : [_.isCita, _.isCitaRapida],
+                                : [_.isCitaRapida, _.isCita],
                             listWords: _.isLibre
-                                ? ["OCUPADO", "      CITA      ", "CITA RÁPIDA"]
-                                : ["      CITA      ", "CITA RÁPIDA"],
+                                ? [
+                                    "OCUPADO",
+                                    "      CITA SIMPLE   ",
+                                    "     CITA    "
+                                  ]
+                                : ["   CITA SIMPLE ", "     CITA     "],
                             isMultiSelect: false,
                           ),
                         ),

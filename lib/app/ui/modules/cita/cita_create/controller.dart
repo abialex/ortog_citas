@@ -280,8 +280,8 @@ class CitaCreateController extends GetxController {
   //update
   int idPaciente = 0;
   int? idSede = 0;
-  RxBool isCita = true.obs;
-  RxBool isCitaRapida = false.obs;
+  RxBool isCita = false.obs;
+  RxBool isCitaRapida = true.obs;
   int idDoctor = 0;
   String fechaCita = "";
   String razon = "";
@@ -358,7 +358,7 @@ class CitaCreateController extends GetxController {
 
   void setRazon(String raz) {
     createFormModel.update((val) {
-      val?.razon = razon;
+      val?.razon = raz;
     });
     this.razon = raz;
   }
