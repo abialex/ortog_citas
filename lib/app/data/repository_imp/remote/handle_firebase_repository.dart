@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ortog_citas/app/data/models/notification/notification_model.dart';
 
 import '../../../domain/either/either.dart';
 import '../../../domain/repository/ihandle_firebase_repository.dart';
@@ -13,5 +14,11 @@ class HandleFirebaseRepository extends IHandleFirebaseRepository {
   Future<Either<SystemNotification, bool>> saveUserTokenFirebase(
       UserTokenFirebaseModel userTokenFirebaseModel) {
     return _api.saveUserTokenFirebase(userTokenFirebaseModel);
+  }
+
+  @override
+  Future<Either<SystemNotification, bool>> sendNotification(
+      NotificationModel notificationModel) {
+    return _api.sendNotification(notificationModel);
   }
 }

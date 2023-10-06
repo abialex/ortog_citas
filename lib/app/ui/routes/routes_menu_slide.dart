@@ -31,6 +31,7 @@ final RutasAsistente = <RutasMenu>[
   RutasMenu(
       Icons.personal_injury_outlined, 'Pacientes', AppRoutes.PACIENTE_LIST),
   RutasMenu(Icons.update, 'Actualizar Citas', AppRoutes.CITA_RAPIDA_LIST),
+  RutasMenu(Icons.message, 'Notificaciones', AppRoutes.NOTIFICACIONES)
 ];
 
 //----------------------------------------------------------------

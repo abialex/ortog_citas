@@ -14,6 +14,7 @@ class DoctorModel extends Doctor {
     required String? correo,
     required String? celular,
     required String fechaNacimiento,
+    required int usuario_id,
   }) : super(
           id: id,
           usuario: usuario,
@@ -22,6 +23,7 @@ class DoctorModel extends Doctor {
           correo: correo,
           celular: celular,
           fechaNacimiento: fechaNacimiento,
+          usuario_id: usuario_id,
         );
 
   //fromJson

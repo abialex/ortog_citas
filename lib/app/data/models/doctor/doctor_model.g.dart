@@ -14,6 +14,7 @@ DoctorModel _$DoctorModelFromJson(Map<String, dynamic> json) => DoctorModel(
       correo: json['correo'] as String?,
       celular: json['celular'] as String?,
       fechaNacimiento: json['fechaNacimiento'] as String,
+      usuario_id: json['usuario_id'] as int,
     );
 
 Map<String, dynamic> _$DoctorModelToJson(DoctorModel instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$DoctorModelToJson(DoctorModel instance) =>
       'correo': instance.correo,
       'celular': instance.celular,
       'fechaNacimiento': instance.fechaNacimiento,
+      'usuario_id': instance.usuario_id,
     };

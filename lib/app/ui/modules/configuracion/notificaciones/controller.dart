@@ -1,20 +1,24 @@
 // ignore_for_file: avoid_print
-import 'dart:async';
-import 'dart:convert';
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/middleware/push_notification_service.dart';
-import '../../../../data/models/usuario/message_real_time_model.dart';
+import 'package:ortog_citas/app/data/models/doctor/doctor_model.dart';
+import 'package:ortog_citas/app/data/models/notification/notification_model.dart';
+import 'package:ortog_citas/app/data/models/system_notification.dart';
+import 'package:ortog_citas/app/data/repository_imp/local/local_auth_repository.dart';
+import 'package:ortog_citas/app/domain/repository/idoctor_repository.dart';
+import 'package:ortog_citas/app/domain/usecases/userFirebase/send_notification.dart';
+import 'package:ortog_citas/app/ui/global_controllers/dialog_controller.dart';
+
 import '../../../../data/models/usuario/usuario_responsive.dart';
-import '../../../../data/repository_imp/local/local_auth_repository.dart';
-import '../../../global_controllers/snackbar_controller.dart';
-import '../../../routes/app_routes.dart';
 
 class NotificacionesController extends GetxController {
   final LocalAuthRepository _localAuthRepository =
       Get.find<LocalAuthRepository>();
+  final IDoctorRepository _doctorRepository = Get.find<IDoctorRepository>();
+  final SendNotificationUC _sendNotificationUC;
 
   Rx<UsuarioResponsive> user = UsuarioResponsive(
     id: 0,
@@ -25,15 +29,19 @@ class NotificacionesController extends GetxController {
     persona: "",
   ).obs;
 
-  Rx<String> titulo = "!Bienvenido a la App de Citas Dentales!".obs;
-  Rx<String> mensaje =
-      "- Visualiza las citas de tus pacientes de manera fácil y rápida".obs;
-  Rx<String> boyd = "".obs;
+  RxList<DoctorModel> doctorList = <DoctorModel>[].obs;
+  NotificationModel notificationSend =
+      NotificationModel(user_id: 0, title: "", message: "", data: {});
+
+  NotificacionesController(
+    this._sendNotificationUC,
+  );
 
   @override
   void onReady() async {
     super.onReady();
     user.value = await _localAuthRepository.currentUser ?? user.value;
+    _getDoctores();
     update();
     if (Platform.isAndroid) {
       // getUser();
@@ -43,6 +51,43 @@ class NotificacionesController extends GetxController {
   @override
   void onClose() async {
     super.onClose();
+  }
+
+  void getListHoraModelFilterByDoctor(DoctorModel? doctorModel) async {}
+  void sendNotification(NotificationModel notificationModel) async {
+    final result = await _sendNotificationUC.call(notificationModel);
+    result.when(left: (systemNotification) {
+      DialogController().showDialog001(
+        icon: Icons.person_off,
+        title: systemNotification.titulo,
+        mensaje: systemNotification.mensaje,
+        twoOptions: false,
+      );
+    }, right: (response) {
+      DialogController().showDialog001(
+        icon: Icons.message,
+        title: "Mensaje enviado",
+        mensaje: "",
+        twoOptions: false,
+      );
+    });
+  }
+
+  Future<void> _getDoctores() async {
+    doctorList.clear();
+    final result =
+        await _doctorRepository.getPersonasDoctorByIdUsuario(user.value.id);
+    result.when(left: (systemNotification) {
+      DialogController().showDialog002(
+        icon: Icons.error,
+        title: systemNotification.titulo,
+        mensaje: systemNotification.mensaje,
+        twoOptions: false,
+      );
+    }, right: (response) {
+      doctorList.addAll(response);
+      update();
+    });
   }
 
   // void getUser() async {

@@ -72,6 +72,14 @@ extension ResponseExtensions on Response {
           detalle: "",
         ),
       );
+    } else if (statusCode == 400) {
+      return Either.left(
+        SystemNotification(
+          titulo: "Usuario",
+          mensaje: "el Usuario no se ha logueado al App",
+          detalle: "",
+        ),
+      );
     } else {
       return Either.left(
         SystemNotification(

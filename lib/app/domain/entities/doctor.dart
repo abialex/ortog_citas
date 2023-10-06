@@ -7,6 +7,7 @@ abstract class Doctor {
     required this.usuario,
     required this.dni,
     required this.denominacion,
+    required this.usuario_id,
     this.correo,
     this.celular,
     required this.fechaNacimiento,
@@ -18,4 +19,5 @@ abstract class Doctor {
   final String? correo;
   final String? celular;
   final String fechaNacimiento;
+  final int usuario_id;
 }
