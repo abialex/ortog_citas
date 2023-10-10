@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ortog_citas">
+    package="com.ort.ortog_citas">
    <application
-        android:label="ortog_citas"
+        android:label="Ortognatica"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

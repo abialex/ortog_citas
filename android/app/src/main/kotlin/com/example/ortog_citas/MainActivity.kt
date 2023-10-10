@@ -1,4 +1,4 @@
-package com.example.ortog_citas
+package com.ort.ortog_citas
 
 import io.flutter.embedding.android.FlutterActivity
 
