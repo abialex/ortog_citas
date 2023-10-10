@@ -43,14 +43,14 @@ class InicioDoctorPage extends GetWidget<InicioDoctorController> {
                     fontsize: 18,
                   ),
                   SizedBox(height: 24),
-                  ImageBubble(
-                    image: Image.asset(
-                      'assets/inicioImag.png',
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      height: 500,
-                    ),
-                  )
+                  // ImageBubble(
+                  //   image: Image.asset(
+                  //     'assets/inicioImag.png',
+                  //     alignment: Alignment.center,
+                  //     width: double.infinity,
+                  //     height: 500,
+                  //   ),
+                  // )
                 ],
               ),
             ),

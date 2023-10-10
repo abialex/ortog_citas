@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../data/models/container/sede_model.dart';
 import '../../../global_widgets/buttons/custom_button_submit.dart';
 import '../../../global_widgets/divider/custom_divider.dart';
-import '../../../global_widgets/dropdowns/dropdown01/custom_dropdown_form_field_001.dart';
 import '../../../global_widgets/labels/custom_label_form_001.dart';
 import '../../../global_widgets/progressIndicatorCustom/custom_progress.dart';
 import '../../../global_widgets/textFields/text_field_001/custom_text_form_field_001.dart';
@@ -225,7 +223,8 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                                                 CrossAxisAlignment.stretch,
                                             children: [
                                               const CustomLabelForm001(
-                                                label: 'Número de Documento:',
+                                                label:
+                                                    'Buscar en la Base de datos el Número de Documento: ',
                                                 left: 5,
                                                 top: 5,
                                               ),
@@ -243,6 +242,14 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                                                 validators: _.dniValidators,
                                                 textInputAction: null,
                                                 //value: 22,
+                                              ),
+                                              Text(
+                                                "  Si el dni no se encuentra es porque no está registrado en la base de datos",
+                                                style: TextStyle(
+                                                  color: OrtognaticaColors
+                                                      .rojoLight,
+                                                  fontSize: 10,
+                                                ),
                                               )
                                             ],
                                           ),
@@ -334,7 +341,7 @@ class CitaCreate extends GetWidget<CitaCreateController> {
                                             ),
                                             CustomLabelForm001(
                                               label: _.pacienteCtrl.text.isEmpty
-                                                  ? "--"
+                                                  ? "N.N"
                                                   : _.pacienteCtrl.text,
                                               left: 5,
                                               top: 5,

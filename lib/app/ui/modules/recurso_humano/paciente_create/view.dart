@@ -48,12 +48,26 @@ class PacienteCreatePage extends GetWidget<PacienteCreateController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    ConsultaSunatPage(
+                      onPressed: _.getPersonaSunat, //QUE HAGO CON LOQUE RECIBO,
+                    ),
+                    Text(
+                      "  - Este buscador tiene como único propósito facilitar el proceso de completar Nombres y Apellidos",
+                      style: TextStyle(
+                        color: OrtognaticaColors.azulDark,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      "  - La SUNAT no permite acceder a los datos de las personas menores de edad",
+                      style: TextStyle(
+                        color: OrtognaticaColors.rojoLight,
+                        fontSize: 12,
+                      ),
+                    ),
                     CustomDivider(
                       paddindTop: 15,
                       title: 'Datos del Paciente',
-                    ),
-                    ConsultaSunatPage(
-                      onPressed: _.getPersonaSunat, //QUE HAGO CON LOQUE RECIBO,
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
