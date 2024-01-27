@@ -36,7 +36,7 @@ class DependencyInjection {
     Get.lazyPut<Dio>(
       () => Dio(
         BaseOptions(
-          baseUrl: 'http://alex-ya:2500',
+          baseUrl: 'http://alex-ya.me:2500',
           //baseUrl: 'http://192.168.100.36:5500',
         ),
       ),
