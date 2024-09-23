@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ortog_citas/app/ui/modules/cita/cita_list/widget/pdf_vista_previa_dialog.dart';
 import '../../../../core/utils/style_utils.dart';
 import '../../../../data/models/cita/cita_item_model.dart';
 import '../../../../data/models/doctor/doctor_model.dart';
@@ -9,7 +10,6 @@ import '../../../global_widgets/dropdowns/dropdown01/custom_dropdown_form_field_
 import '../../../global_widgets/labels/custom_label_form_001.dart';
 import '../../../global_widgets/progressIndicatorCustom/custom_progress.dart';
 import '../../../global_widgets/textFields/text_field_001/custom_text_form_field_001.dart';
-import '../../../global_widgets/toggle/toogle_producto_service.dart';
 import '../../../theme/app_colors.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'controller.dart';
@@ -47,8 +47,7 @@ class Cita extends GetWidget<CitaListController> {
                           flex: 4,
                           child: SfDateRangePicker(
                             onSelectionChanged: (date) async {
-                              _.startGetCitas(
-                                  DateTime.parse(date.value.toString()));
+                              _.startGetCitas(DateTime.parse(date.value.toString()));
                             },
                             selectionColor: OrtognaticaColors.OrtogColor,
                             todayHighlightColor: OrtognaticaColors.OrtogColor,
@@ -94,8 +93,7 @@ class Cita extends GetWidget<CitaListController> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: Text(
-                                          "1. Puedes usar las flechas del teclado para navegar en las fechas"),
+                                      child: Text("1. Puedes usar las flechas del teclado para navegar en las fechas"),
                                     ),
                                   ],
                                 ),
@@ -105,11 +103,32 @@ class Cita extends GetWidget<CitaListController> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: Text(
-                                          "2. El botón TODAY(hoy) solo reinicia el calendario"),
+                                      child: Text("2. El botón TODAY(hoy) solo reinicia el calendario"),
                                     ),
                                   ],
                                 ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        showDialog<void>(
+                                          context: context,
+                                          builder: (context) {
+                                            return PdfVistaPreviaDialog();
+                                          },
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.print,
+                                      ),
+                                      iconSize: 35,
+                                    ),
+                                  ],
+                                )
                               ],
                             )),
                       ],
@@ -133,7 +152,9 @@ class Cita extends GetWidget<CitaListController> {
                                   ),
                                   SizedBox(height: 5),
                                   CustomDropdownButtonFormField<DoctorModel>(
-                                    validators: (s) {},
+                                    validators: (s) {
+                                      return null;
+                                    },
                                     items: _.doctorList,
                                     onChanged: _.getListHoraModelFilterByDoctor,
                                     value: _.doctorModelInit?.value,
@@ -254,22 +275,19 @@ class Cita extends GetWidget<CitaListController> {
                         // ),
                         Expanded(
                           child: Obx(() {
-                            if (controller.citasIconStateProgress.value ==
-                                ProgressState.oculto) {
+                            if (controller.citasIconStateProgress.value == ProgressState.oculto) {
                               return Visibility(
                                 visible: _.isVerificado.value,
                                 child: ListView.builder(
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,
                                   itemCount: _.horaList.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
+                                  itemBuilder: (BuildContext context, int index) {
                                     return Obx(() {
                                       late Widget card;
                                       if (_.horaList[index].isLibre) {
                                         card = CustomCardCitaLibre(
-                                          onAddCitaOcupada:
-                                              _.agregarCitaOcupada,
+                                          onAddCitaOcupada: _.agregarCitaOcupada,
                                           onChanged: _.gotoCitaCreate,
                                           itemHoraModel: _.horaList[index],
                                         );
@@ -277,18 +295,15 @@ class Cita extends GetWidget<CitaListController> {
                                         if (_.horaList[index].isOcupado) {
                                           card = CustomCardCitaOcupado(
                                             onChanged: _.gotoCitaCreate,
-                                            onDeleteCitaOcupada:
-                                                _.eliminarCitaOcupada,
+                                            onDeleteCitaOcupada: _.eliminarCitaOcupada,
                                             itemHoraModel: _.horaList[index],
                                           );
                                         } else {
                                           card = CustomCardCita(
                                             onUpdateCita: (citaItemModel) {
-                                              _buildDialogAuxUpdateCita(
-                                                  _, citaItemModel);
+                                              _buildDialogAuxUpdateCita(_, citaItemModel);
                                             },
-                                            onCrearPacienteFromCita:
-                                                _.gotoPacienteCreateFromCita,
+                                            onCrearPacienteFromCita: _.gotoPacienteCreateFromCita,
                                             onDetalleCita: _.gotoCitaDetalle,
                                             onDeleteCita: _.eliminarCita,
                                             onChanged: _.gotoCitaCreate,
@@ -299,11 +314,8 @@ class Cita extends GetWidget<CitaListController> {
                                       if (-1 == _.listbool.indexOf(true.obs)) {
                                         return card;
                                       } else {
-                                        final isVisible =
-                                            _.listbool[index].value;
-                                        return (isVisible
-                                            ? card
-                                            : SizedBox.shrink());
+                                        final isVisible = _.listbool[index].value;
+                                        return (isVisible ? card : SizedBox.shrink());
                                       }
                                     });
                                   },
@@ -315,7 +327,6 @@ class Cita extends GetWidget<CitaListController> {
                                   child: CustomProgressIndicator(),
                                 ),
                               );
-                            ;
                           }),
                         ),
                         Column(
@@ -333,9 +344,7 @@ class Cita extends GetWidget<CitaListController> {
                                 Expanded(
                                   flex: 8,
                                   child: Text(_.user.value.persona ?? "NN",
-                                      textAlign: TextAlign.right,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1),
+                                      textAlign: TextAlign.right, overflow: TextOverflow.ellipsis, maxLines: 1),
                                 ),
                               ],
                             )
@@ -349,8 +358,7 @@ class Cita extends GetWidget<CitaListController> {
             ),
             Positioned.fill(
               child: Obx(() {
-                if (controller.deleteCitaProgress.value ==
-                    ProgressState.visible) {
+                if (controller.deleteCitaProgress.value == ProgressState.visible) {
                   return Container(
                     color: Colors.black26,
                     child: const Center(
@@ -368,8 +376,7 @@ class Cita extends GetWidget<CitaListController> {
     });
   }
 
-  Future<dynamic> _buildDialogAuxUpdateCita(
-      CitaListController citaListController, CitaItemModel citaItemModel) {
+  Future<dynamic> _buildDialogAuxUpdateCita(CitaListController citaListController, CitaItemModel citaItemModel) {
     TextEditingController textNombres = TextEditingController();
     TextEditingController textCelular = TextEditingController();
     TextEditingController textRazon = TextEditingController();
@@ -399,10 +406,8 @@ class Cita extends GetWidget<CitaListController> {
                     ),
                   ),
                   Expanded(
-                      child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
-                          alignment: Alignment.centerLeft,
-                          child: Icon(Icons.edit)))
+                      child:
+                          Container(padding: EdgeInsets.symmetric(horizontal: 5), alignment: Alignment.centerLeft, child: Icon(Icons.edit)))
                 ],
               ),
               Column(
@@ -497,8 +502,7 @@ class Cita extends GetWidget<CitaListController> {
                           );
                           Get.back();
                           Get.back();
-                          bool result = await citaListController
-                              .updateCita(citaItemModel);
+                          // bool result = await citaListController.updateCita(citaItemModel);
                           // if (result) {
                           //   DialogController().showDialog001(
                           //     icon: Icons.edit,
