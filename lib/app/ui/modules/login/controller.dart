@@ -17,15 +17,13 @@ import '../../utils/functions/redirect_function.dart';
 enum ProgressState { oculto, visible }
 
 class LoginController extends GetxController {
-  final IAuthenticationRepository _authenticationRepository =
-      Get.find<IAuthenticationRepository>();
-  final LocalAuthRepository _localAuthRepository =
-      Get.find<LocalAuthRepository>();
+  final IAuthenticationRepository _authenticationRepository = Get.find<IAuthenticationRepository>();
+  final LocalAuthRepository _localAuthRepository = Get.find<LocalAuthRepository>();
   final CreateUserTokenFirebaseUC _createUserTokenFirebaseUC;
 
 //-----------------------------------------------------RX---------------------------------------------------------
   RxBool oculto = true.obs;
-  final lastUpdate = "05/10/2023";
+  final lastUpdate = "07/09/2024";
   final version = "1.0.0";
 
 //-----------------------------------------------------RX FIN---------------------------------------------------------
@@ -55,14 +53,10 @@ class LoginController extends GetxController {
 
   void loguear() async {
     loginIconState(ProgressState.visible);
-    final result = await _authenticationRepository.login(
-        usernameText.text, passwordText.text);
+    final result = await _authenticationRepository.login(usernameText.text, passwordText.text);
     result.when(
       left: (systemNotifacion) {
-        DialogController().showDialog001(
-            title: systemNotifacion.titulo,
-            mensaje: systemNotifacion.mensaje,
-            twoOptions: false);
+        DialogController().showDialog001(title: systemNotifacion.titulo, mensaje: systemNotifacion.mensaje, twoOptions: false);
         loginIconState(ProgressState.oculto);
       },
       right: (response) async {
@@ -83,9 +77,7 @@ class LoginController extends GetxController {
             backgroundColor: OrtognaticaColors.SLGcolor,
           ).showSnacbar();
         } else {
-          CustomSnackbar customSnackbar = CustomSnackbar(
-              title: "Credenciales incorrectas",
-              message: "Vuelva a ingresar sus datos");
+          CustomSnackbar customSnackbar = CustomSnackbar(title: "Credenciales incorrectas", message: "Vuelva a ingresar sus datos");
           customSnackbar.showSnacbar();
         }
       },
